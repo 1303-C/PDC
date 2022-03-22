@@ -15,8 +15,7 @@ class CrearTablaTAreas extends Migration
     {
         Schema::create('t_areas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre_areas',45);
-            $table->timestamps();
+            $table->string('nombre_areas',70);
         });
     }
 

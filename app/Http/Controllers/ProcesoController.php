@@ -27,11 +27,6 @@ class ProcesoController extends Controller
         $indicadores = indicadores::get();
         $frecuencia_control = frecuencia_control::get();
         $nombre_proceso = nombre_proceso::get();
-        if ($request->ajax()) {
-            $datos = analisis_indicadores::leftjoin("t_indicadores AS indicadores_ide", "t_analisis_indicadores.indicadores_id", "=", "indicadores_ide.id")
-                ->get(['t_analisis_indicadores.*", "nombre_indicador AS INDICADOR ']);
-            return DataTables::of($datos)->make(true);
-        }
         return view('pages.Procesos_Calidad.index', compact('analisis_indicadores', 'areas', 'estados', 'indicadores', 'frecuencia_control', 'nombre_proceso'));
     }
 
@@ -74,7 +69,7 @@ class ProcesoController extends Controller
         return redirect('pages/Procesos_Calidad');
     }
 
-    
+
 
     /**
      * Display the specified resource.
@@ -125,12 +120,11 @@ class ProcesoController extends Controller
     public function getlistado_indicadores()
     {
         try {
-            $analisis_indicadores = analisis_indicadores::leftjoin("t_indicadores AS indicadores", "t_analisis_indicadores.indicadores_id", "=", "indicadores.id")
-                ->get(['t_analisis_indicadores.*', 'indicadores.nombre_indicador AS nombre_indicador']);
+            $analisis_indicadores = analisis_indicadores::leftjoin("t_indicadores AS indicadores", "t_analisis_indicadores.indicadores_id", "=", "indicadores.id") ->leftjoin("t_areas AS areas", "indicadores.areas_id", "=", "areas.id")
+                ->get(['t_analisis_indicadores.*', 'indicadores.nombre_indicador AS nombre_indicador', 'areas.nombre_areas AS areas']);
             $response = ['data' => $analisis_indicadores];
         } catch (\Throwable $th) {
         }
         return response()->json($response);
     }
-    
 }

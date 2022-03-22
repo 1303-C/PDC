@@ -40,6 +40,9 @@
                 data: 'nombre_indicador',
                 name: 'nombre_indicador',
             }, {
+                data: 'areas',
+                name: 'areas',
+            }, {
                 data: 'analisis_indicador',
                 name: 'analisis_indicador',
             }, {
@@ -89,13 +92,13 @@
 
         });
 
-        tabla =  $('#tabla_indicador').DataTable();
+        tabla = $('#tabla_indicador').DataTable();
 
-        $("#filtro_busqueda").keyup(function(){
+        $("#filtro_busqueda").keyup(function() {
             tabla.columns($(this).data('index')).search(this.value).draw();
         })
 
-      
+
 
 
 

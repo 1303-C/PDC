@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\estado_acciones;
+use App\Models\estados;
+use App\Models\tipo_acciones;
 use Illuminate\Http\Request;
 
 class EstadoController extends Controller
@@ -13,7 +16,10 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        return view('pages.estado_acciones.index');
+        $estado_acciones = estado_acciones::get();
+        $tipo_acciones = tipo_acciones::get();
+        $estados = estados::get();
+        return view('pages.estado_acciones.index', compact('estado_acciones', 'tipo_acciones','estados'));
     }
 
     /**
@@ -34,7 +40,9 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = $request -> all();
+        estado_acciones::create($datos);
+        return redirect('/pages/estado_acciones');
     }
 
     /**

@@ -39,5 +39,6 @@ Route::get('/pages/percepcion_cliente/listado_proceso',[PercepcionController::cl
 
 /*Estado acciones*/
 Route::get('/pages/estado_acciones',[EstadoController::class, 'index'])->name('estado_acciones');
+Route::post('/pages/estado_acciones/guardarestado', [EstadoController::class, 'store'])->name('store_estado_acciones');
 
 
