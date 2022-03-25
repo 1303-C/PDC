@@ -26,8 +26,7 @@ class ProcesoController extends Controller
         $estados = estados::get();
         $indicadores = indicadores::get();
         $frecuencia_control = frecuencia_control::get();
-        $nombre_proceso = nombre_proceso::get();
-        return view('pages.Procesos_Calidad.index', compact('analisis_indicadores', 'areas', 'estados', 'indicadores', 'frecuencia_control', 'nombre_proceso'));
+        return view('pages.Procesos_Calidad.index', compact('analisis_indicadores', 'areas', 'estados', 'indicadores', 'frecuencia_control'));
     }
 
     /* public function getIndicadores(){

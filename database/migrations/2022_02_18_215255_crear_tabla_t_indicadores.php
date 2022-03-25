@@ -20,8 +20,6 @@ class CrearTablaTIndicadores extends Migration
             $table->foreign('frecuencia_control_id','fk_frecuenciacontrol')->references('id')->on('t_frecuencia_controles')->onDelete('restrict')->onUpdate('restrict');
             $table->unsignedInteger('areas_id');
             $table->foreign('areas_id','fk_areas')->references('id')->on('t_areas')->onDelete('restrict')->onUpdate('restrict');
-            $table->unsignedInteger('procesos_id');
-            $table->foreign('procesos_id','fk_nombreprocesoi')->references('id')->on('t_nombre_procesos')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

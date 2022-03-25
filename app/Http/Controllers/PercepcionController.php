@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\nombre_proceso;
+use App\Models\areas;
 use App\Models\procesos;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -16,14 +16,9 @@ class PercepcionController extends Controller
      */
     public function index(Request $request)
     {
-        $procesos= procesos::get();
-        $nombre_proceso = nombre_proceso::get();
-        if ($request->ajax()) { 
-            $datos = procesos::leftjoin("t_nombre_procesos AS nombre_procesos","t_procesos.nombre_procesos_id","=","nombre_procesos.id")
-            ->get(['t_procesos.*','nombre_procesos.nombre_proceso AS nombre_procesos']);
-            return DataTables::of($datos)->make(true);
-        }
-        return view('pages.percepcion_cliente.index', compact('procesos','nombre_proceso'));
+        $procesos = procesos::get();
+        $areas = areas::get();
+        return view('pages.percepcion_cliente.index', compact('procesos', 'areas'));
     }
 
     /**
@@ -44,9 +39,9 @@ class PercepcionController extends Controller
      */
     public function store(Request $request)
     {
-       $datos = $request -> all();
-       procesos::create($datos);
-       return redirect('/pages/percepcion_cliente');
+        $datos = $request->all();
+        procesos::create($datos);
+        return redirect('/pages/percepcion_cliente');
     }
 
     /**
@@ -95,14 +90,17 @@ class PercepcionController extends Controller
     {
         //
     }
-    public function getlistado_procesos()
+
+    public function getlistado_proceso ()
     {
-        try {
-            $procesos = procesos::leftjoin("t_nombre_procesos AS nombre_procesos","t_procesos.nombre_procesos_id","=","nombre_procesos.id")
-            ->get(['t_procesos.*','nombre_procesos.nombre_proceso AS nombre_procesos']);
-            $response = ['data' => $procesos];
-        } catch (\Throwable $th) {
+        {
+            try {
+                $procesos = procesos::leftjoin("t_areas AS nombre_areas","t_procesos.p_areas_id","=","nombre_areas.id")
+                ->get(['t_procesos.*','nombre_areas.nombre_areas AS nombre_areas']);
+                $response = ['data' => $procesos];
+            } catch (\Throwable $th) {
+            }
+            return response()->json($response);
         }
-        return response()->json($response);
     }
 }

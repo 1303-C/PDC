@@ -14,7 +14,7 @@ class procesos extends Model
         'calificacion',
         'calificacion_total',
         'desempeño',
-        'nombre_procesos_id',
+        'p_areas_id',
     ];
     protected $primaryKey = 'id';
     use HasFactory;

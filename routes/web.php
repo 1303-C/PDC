@@ -35,10 +35,13 @@ Route::get('/pages/Procesos_Calidad/listado_indicadores',[ProcesoController::cla
 Route::get('/pages/percepcion_cliente', [PercepcionController::class, 'index'])->name('percepcion_cliente');
 Route::post('/pages/percepcion_cliente/guardar', [PercepcionController::class, 'store'])->name('store_percepcion_cliente');
 Route::post('/pages/percepcion_cliente/update/{id}', [PercepcionController::class, 'update'])->name('update_proceso');
-Route::get('/pages/percepcion_cliente/listado_proceso',[PercepcionController::class, 'getlistado_procesos'])->name('getlistado_procesos');
+Route::get('/pages/percepcion_cliente/listado_proceso',  [PercepcionController::class, 'getlistado_proceso'])->name('getlistado_proceso');
 
 /*Estado acciones*/
 Route::get('/pages/estado_acciones',[EstadoController::class, 'index'])->name('estado_acciones');
 Route::post('/pages/estado_acciones/guardarestado', [EstadoController::class, 'store'])->name('store_estado_acciones');
+Route::post('/pages/estado_acciones/update/{id}', [EstadoController::class, 'update'])->name('update_estado');
+Route::get('/pages/estado_acciones/listado_estado',[EstadoController::class, 'getlistado_estado'])->name('getlistado_estado');
+
 
 

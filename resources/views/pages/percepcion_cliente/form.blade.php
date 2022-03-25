@@ -16,12 +16,12 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label>Proceso</label>
-                                <select class="form-control col-lg-12" style="width: 100%;" id="nombre_procesos_id"
-                                    name="nombre_procesos_id" required>
+                                <select class="form-control col-lg-12" style="width: 100%;" id="p_areas_id"
+                                    name="p_areas_id" required>
                                     <option value="">-Seleccione-</option>
-                                    @foreach ($nombre_proceso as $nombre_proceso)
-                                        <option value="{{ $nombre_proceso->id }}">
-                                            {{ $nombre_proceso->nombre_proceso }}
+                                    @foreach ($areas as $areas)
+                                        <option value="{{ $areas->id }}">
+                                            {{ $areas->nombre_areas }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -130,7 +130,7 @@
                                         <div class="row-10">
                                             <table id="tabla_cliente_interno"
                                                 class="table table-striped table-bordered aligned-middle">
-                                                <thead>
+                                                <thead class="bg-info">
                                                     <tr>
                                                         <th>Proceso</th>
                                                         <th>Efectividad</th>

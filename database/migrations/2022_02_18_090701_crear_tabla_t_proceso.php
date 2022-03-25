@@ -20,8 +20,8 @@ class CrearTablaTProceso extends Migration
             $table->string('calificacion',45);
             $table->string('calificacion_total',45);
             $table->string('desempeño',45);
-            $table->unsignedInteger('nombre_procesos_id');
-            $table->foreign('nombre_procesos_id','fk_nombreproceso')->references('id')->on('t_nombre_procesos')->onDelete('restrict')->onUpdate('restrict');
+            $table->unsignedInteger('p_areas_id');
+            $table->foreign('p_areas_id','fk_areas_proceso')->references('id')->on('t_areas')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

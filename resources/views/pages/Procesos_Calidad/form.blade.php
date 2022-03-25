@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label>Nombre Areas</label>
+                                <label>Nombre Proceso</label>
                                 <select class="form-control col-lg-12" style="width: 100%;" id="areas_id" name="areas_id"
                                     required>
                                     <option value="">-Seleccione-</option>
@@ -192,7 +192,7 @@
                                                 <thead class="bg-info">
                                                     <tr>
                                                         <th>Nombre Indicador</th>
-                                                        <th>Nombre Areas</th>
+                                                        <th>Nombre Proceso</th>
                                                         <th>Analisis Indicador</th>
                                                         <th>Indicador Inverso</th>
                                                         <th>Resultado</th>
@@ -210,9 +210,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-2">
-                                <label for="filtro_busqueda">Bucar Indicador</label>
+                                <label for="filtro_busqueda">Bucar proceso</label>
                                 <input type="text" name="filtro_busqueda" id="filtro_busqueda" class="form-control mx-1"
-                                    placeholder="Buscar.." data-index="0">
+                                    placeholder="Buscar.." data-index="1">
                             </div>
                             <div class="form-group col-lg-2">
                                 <label>Desempeño</label>

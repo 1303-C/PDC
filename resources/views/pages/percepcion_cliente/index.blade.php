@@ -26,10 +26,10 @@
             autoWidth: false,
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
                 "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            ajax: "{{ route('percepcion_cliente') }}",
+                ajax: "{{ route('getlistado_proceso') }}",
             columns: [{
-                data: 'nombre_procesos',
-                name: 'nombre_procesos',
+                data: 'nombre_areas',
+                name: 'nombre_areas',
             }, {
                 data: 'efectividad',
                 name: 'efectividad',
@@ -53,7 +53,7 @@
                 data: 'calificacion_total',
                 name: 'calificacion_total',
                 render: function(data, type, row) {
-                    return Math.round((row.calificacion + 22 ) / 1 ) + '%';
+                    return Math.round((row.calificacion + 22) / 1) + '%';
                 }
 
             }, {
@@ -85,11 +85,10 @@
             console.log(d);
             $('#form-procesos').attr("action", "http://pdc.test/pages/percepcion_cliente/update/" + d.id);
             // $('#metodo-indicadores').attr("value", "put");
-            $('#nombre_procesos_id').val(d.nombre_procesos_id);
+            $('#p_areas_id').val(d.p_areas_id);
             $('#efectividad').val(d.efectividad);
             $('#calificacion').val(d.calificacion);
             $('#calificacion_total').val(d.calificacion_total);
-            $('#nombre_procesos_id').val(d.nombre_procesos_id);
             $('#desempeño').val(d.desempeño);
             $('#oportunidad').val(d.oportunidad);
 
@@ -101,14 +100,12 @@
         });
 
         function limpiar() {
-            $('#nombre_procesos_id').val('');
+            $('#p_areas_id').val('');
             $('#efectividad').val('');
             $('#calificacion').val('');
             $('#calificacion_total').val('');
-            $('#nombre_procesos_id').val('');
             $('#desempeño').val('');
             $('#oportunidad').val('');
-
 
             //Visualizacion Botones 
             $('#btn-guardar-p').css('display', '')
