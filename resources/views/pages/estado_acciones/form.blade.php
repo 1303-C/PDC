@@ -38,14 +38,7 @@
                             <div class="from-group">
                                 <label>Fecha Cierre</label>
                                 <input class="form-control col-lg-12" style="width: 100%;" id="fecha_cierre"
-                                    name="fecha_cierre" required>
-                                {{-- <div class="input-group date" id="fecha_cierre" name="fecha_cierre" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input"
-                                    data-target="#reservationdate" />
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div> --}}
+                                    name="fecha_cierre" type="Date" required>
                             </div>
                         </div>
                         <div class="col-3">

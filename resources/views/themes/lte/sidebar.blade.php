@@ -14,7 +14,7 @@
                 <img src="../assets/lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block text-wrap"> {{ auth()->user()->name}}</a>
+                <a href="#" class="d-block text-wrap">{{auth()->user()->name}}</a>
             </div>
         </div>
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('caag') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             CAAG

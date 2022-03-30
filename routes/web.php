@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CaagController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PercepcionController;
@@ -43,5 +44,7 @@ Route::post('/pages/estado_acciones/guardarestado', [EstadoController::class, 's
 Route::post('/pages/estado_acciones/update/{id}', [EstadoController::class, 'update'])->name('update_estado');
 Route::get('/pages/estado_acciones/listado_estado',[EstadoController::class, 'getlistado_estado'])->name('getlistado_estado');
 
+/*CAAG*/
+Route::get('/pages/caag',[CaagController::class, 'index'])->name('caag');
 
 
