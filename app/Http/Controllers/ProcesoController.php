@@ -10,6 +10,7 @@ use App\Models\indicadores;
 use App\Models\nombre_proceso;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class ProcesoController extends Controller
@@ -115,15 +116,19 @@ class ProcesoController extends Controller
     {
         //
     }
+    
 
     public function getlistado_indicadores()
     {
         try {
-            $analisis_indicadores = analisis_indicadores::leftjoin("t_indicadores AS indicadores", "t_analisis_indicadores.indicadores_id", "=", "indicadores.id") ->leftjoin("t_areas AS areas", "indicadores.areas_id", "=", "areas.id")
-                ->get(['t_analisis_indicadores.*', 'indicadores.nombre_indicador AS nombre_indicador', 'areas.nombre_areas AS areas']);
-            $response = ['data' => $analisis_indicadores];
+            $analisis_indicadores = analisis_indicadores::leftjoin("t_indicadores AS indicadores", "t_analisis_indicadores.indicadores_id", "=", "indicadores.id")->leftjoin("t_areas AS areas", "indicadores.areas_id", "=", "areas.id")->get(['t_analisis_indicadores.*', 'indicadores.nombre_indicador AS nombre_indicador', 'areas.nombre_areas AS areas']);
+            
+            $response = ['data' => $analisis_indicadores];          
         } catch (\Throwable $th) {
+
         }
+        // dd($analisis_indicadores);
         return response()->json($response);
     }
+    
 }

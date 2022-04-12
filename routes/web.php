@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CaagController;
+use App\Http\Controllers\CcgrController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PercepcionController;
@@ -46,5 +47,15 @@ Route::get('/pages/estado_acciones/listado_estado',[EstadoController::class, 'ge
 
 /*CAAG*/
 Route::get('/pages/caag',[CaagController::class, 'index'])->name('caag');
+Route::post('/pages/caag/guardarcaag', [CaagController::class, 'store'])->name('store_caag');
+Route::post('/pages/caag/update/{id}', [CaagController::class, 'update'])->name('update_actividadesGerencia');
+Route::get('/pages/caag/listado_actividadesGerencia',[CaagController::class, 'getlistado_actividadesGerencia'])->name('getlistado_actividadesGerencia');
+/*CCGR*/
+Route::get('/pages/ccgr',[CcgrController::class, 'index'])->name('ccgr');
+Route::post('/pages/estado_acciones/guardarccgr', [CcgrController::class, 'store'])->name('store_ccgr');
+Route::post('/pages/ccgr/update/{id}', [CcgrController::class, 'update'])->name('update_cumplimientoCompromisos');
+Route::get('/pages/ccgr/listado_cumplimientoCompromisos',[CcgrController::class, 'getlistado_cumplimientoCompromisos'])->name('getlistado_cumplimientoCompromisos');
 
 
+
+Route::get('/prueba',[ProcesoController::class, 'getlistado_indicadores'])->name('prueba');

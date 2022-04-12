@@ -10,6 +10,7 @@ class procesos extends Model
     protected $table = 't_procesos';
     protected $fillable= [
         'efectividad',
+        'razon_calificacion',
         'oportunidad',
         'calificacion',
         'calificacion_total',

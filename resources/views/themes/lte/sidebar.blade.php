@@ -3,7 +3,7 @@
     <a href="../assets/lte/index3.html" class="brand-link">
         <img src="../assets/lte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Procesos Calidad</span>
     </a>
 
     <!-- Sidebar -->
@@ -14,7 +14,7 @@
                 <img src="../assets/lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block text-wrap">{{auth()->user()->name}}</a>
+                <a href="#" class="d-block text-wrap">{{ auth()->user()->name }}</a>
             </div>
         </div>
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -39,7 +39,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('Procesos_Calidad') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fa-solid fa-laptop-code"></i>
                         <p>
                             Analisis Indicador
                             <span class="right badge badge-danger"></span>
@@ -49,7 +49,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('percepcion_cliente') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fa-solid fa-masks-theater"></i>
                         <p>
                             Percepcion Cliente Interno
                             <span class="badge badge-info right"></span>
@@ -58,7 +58,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('estado_acciones') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fa-solid fa-business-time"></i>
                         <p>
                             Estado Acciones
                             <span class="badge badge-info right"></span>
@@ -67,11 +67,25 @@
                 </li>
                 <li class="nav-item ">
                     <a href="{{ route('caag') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            CAAG
-                            <span class="badge badge-info right"></span>
-                        </p>
+                        <abbr title="Cumplimiento Actividades Asignadas Por Gerencia">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <p>
+                                CAAG
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </abbr>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="{{ route('ccgr') }}" class="nav-link">
+                        <abbr title="Cumplimiento Compromisos Gestion Del Riesgo">
+                            <i class="fa-solid fa-list-check"></i>
+                            <p>
+                                CCGR
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </abbr>
+
                     </a>
                 </li>
             </ul>

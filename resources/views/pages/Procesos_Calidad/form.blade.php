@@ -86,17 +86,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="form-group">
-                                <label for="inputProjectLeader">Nombre Areas</label>
-                                <select class="form-control" style="width: 100%;" id="indicadores_id"
-                                    name="indicadores_id" required autocomplete="off">
-                                    <option value="">-Seleccione-</option>
-                                    @foreach ($indicadores as $indicador)
-                                        <option value="{{ $indicador->id }}">{{ $indicador->nombre_indicador }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
                             <div class="form-group">
                                 <label>Analisis Indicador</label>
                                 <textarea class="form-control" style="width: 100%;" id="analisis_indicador" name="analisis_indicador"

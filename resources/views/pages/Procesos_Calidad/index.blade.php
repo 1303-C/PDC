@@ -79,7 +79,7 @@
                 defaultContent: '<td>' +
                     '<div class="action button text-center">' +
                     '<a href="#" class="btn btn-primary btn-icon btn-sm">' +
-                    '<i class="fas fa-edit"></i>' +
+                    '<i class="fa-solid fa-user-pen"></i>' +
                     '</a>' +
                     '</div>' +
                     '</td>',

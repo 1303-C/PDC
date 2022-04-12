@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\caag;
+use App\Models\estados;
 use Illuminate\Http\Request;
 
 class CaagController extends Controller
@@ -13,7 +15,9 @@ class CaagController extends Controller
      */
     public function index()
     {
-        return view('pages.caag.index');
+        $caag = caag::get();
+        $estados = estados::get();
+        return view('pages.caag.index', compact('caag', 'estados'));
     }
 
     /**
@@ -34,7 +38,9 @@ class CaagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = $request->all();
+        caag::create($datos);
+        return redirect('/pages/caag');
     }
 
     /**
@@ -68,7 +74,9 @@ class CaagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $datos = $request->all();
+        caag::findOrFail($id)->update($datos);
+        return redirect('/pages/caag');
     }
 
     /**
@@ -80,5 +88,16 @@ class CaagController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getlistado_actividadesGerencia(Request $request) {
+
+        try {
+            $caag = caag::leftjoin("t_estados AS estado","t_caag.ca_estado_id","=","estado.id")->get(['t_caag.*','estado.estado AS estado']);
+            $response = ['data' => $caag ];
+        } catch (\Throwable $th) {
+        }
+        return response()->json($response);
+
     }
 }

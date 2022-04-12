@@ -26,39 +26,29 @@
             autoWidth: false,
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
                 "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-                ajax: "{{ route('getlistado_proceso') }}",
+            ajax: "{{ route('getlistado_proceso') }}",
             columns: [{
                 data: 'nombre_areas',
                 name: 'nombre_areas',
             }, {
+                data: 'razon_calificacion',
+                name: 'razon_calificacion',
+            }, {
                 data: 'efectividad',
                 name: 'efectividad',
-                render: function(data, type, row) {
-                    return data + '%';
-                }
             }, {
                 data: 'oportunidad',
                 name: 'oportunidad',
-                render: function(data, type, row) {
-                    return data + '%';
-                }
             }, {
                 data: 'calificacion',
                 name: 'calificacion',
-                render: function(data, type, row) {
-                    return data + '%';
-                }
-
             }, {
                 data: 'calificacion_total',
                 name: 'calificacion_total',
                 render: function(data, type, row) {
-                    return Math.round((row.calificacion + 22) / 1) + '%';
+                    return Math.round((row.calificacion + 22) / 1);
                 }
 
-            }, {
-                data: 'desempeño',
-                name: 'desempeño',
             }, {
                 class: "editar_proceso",
                 orderable: false,
@@ -66,7 +56,7 @@
                 defaultContent: '<td>' +
                     '<div class="action button text-center">' +
                     '<a href="#" class="btn btn-primary btn-icon btn-sm">' +
-                    '<i class="fas fa-edit"></i>' +
+                    '<i class="fa-solid fa-user-pen"></i>' +
                     '</a>' +
                     '</div>' +
                     '</td>',
@@ -86,10 +76,11 @@
             $('#form-procesos').attr("action", "http://pdc.test/pages/percepcion_cliente/update/" + d.id);
             // $('#metodo-indicadores').attr("value", "put");
             $('#p_areas_id').val(d.p_areas_id);
+            $('#razon_calificacion').val(d.razon_calificacion);
             $('#efectividad').val(d.efectividad);
             $('#calificacion').val(d.calificacion);
             $('#calificacion_total').val(d.calificacion_total);
-            $('#desempeño').val(d.desempeño);
+            // $('#desempeño').val(d.desempeño);
             $('#oportunidad').val(d.oportunidad);
 
             //Visualizacion Botones 
@@ -101,10 +92,11 @@
 
         function limpiar() {
             $('#p_areas_id').val('');
+            $('#razon_calificacion').val('');
             $('#efectividad').val('');
             $('#calificacion').val('');
             $('#calificacion_total').val('');
-            $('#desempeño').val('');
+            // $('#desempeño').val('');
             $('#oportunidad').val('');
 
             //Visualizacion Botones 

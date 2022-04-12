@@ -16,6 +16,7 @@ class CrearTablaTProceso extends Migration
         Schema::create('t_procesos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('efectividad',45);
+            $table->longText('razon_calificacion',400);
             $table->string('oportunidad',45);
             $table->string('calificacion',45);
             $table->string('calificacion_total',45);

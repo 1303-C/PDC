@@ -26,17 +26,10 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-lg-5">
-                                    <label>Calificacion Total</label>
-                                    <input disabled="disabled" class="form-control" style="width: 100%;"
-                                        id="calificacion_total" name="calificacion_total" required>
-                                </div>
-                                <div class="form-group col-lg-5">
-                                    <label>Desempeño</label>
-                                    <input disabled="disabled" class="form-control" style="width: 100%;" id="desempeño"
-                                        name="desempeño" required>
-                                </div>
+                            <div class="form-group">
+                                <label>Razon Calificacion</label>
+                                <textarea class="form-control" style="width: 100%;" id="razon_calificacion" name="razon_calificacion"
+                                    autocomplete="off" required style="height: 4px;"></textarea>
                             </div>
                         </div>
                         <div class="col-4">
@@ -68,11 +61,11 @@
                                         <option value="5">5</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="form-group col-lg-5">
-                                <label>Calificacion</label>
-                                <input readonly class="form-control inputCalificacion" style="width: 100%;"
-                                    id="calificacion" name="calificacion" required>
+                                <div class="form-group col-lg-5">
+                                    <label>Calificacion</label>
+                                    <input readonly class="form-control inputCalificacion" style="width: 100%;"
+                                        id="calificacion" name="calificacion" required>
+                                </div>
                             </div>
                         </div>
                         <div class="col-4">
@@ -133,11 +126,12 @@
                                                 <thead class="bg-info">
                                                     <tr>
                                                         <th>Proceso</th>
+                                                        <th>Razon Calificacion</th>
                                                         <th>Efectividad</th>
                                                         <th>oportunidad</th>
                                                         <th>Calificacion</th>
                                                         <th>Calificacion Total</th>
-                                                        <th>Desempeño</th>
+                                                        {{-- <th>Desempeño</th> --}}
                                                         <th>Accion</th>
                                                     </tr>
                                                 </thead>
