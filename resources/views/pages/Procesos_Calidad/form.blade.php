@@ -1,9 +1,9 @@
 @section('contenido')
-    <div class="content-header">
+    <div class="content-header p-0 ">
         <form action="{{ route('guardar_indicador') }}" method="POST">
             @csrf
             <input type="hidden" name="method" value="" id="metodo-indicadores_dos">
-            <div class="card card-teal">
+            <div class="card card-blue">
                 <div class="card-header">
                     <h3 class="card-title">Crear Indicador</h3>
                     <div class="card-tools">
@@ -14,18 +14,17 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 p-1">
                             <div class="form-group">
                                 <label>Nombre Indicador</label>
-                                <input class="form-control" style="width: 100%;" id="nombre_indicador"
+                                <input class="form-control-sm-border" style="width: 100%;" id="nombre_indicador"
                                     name="nombre_indicador" required autocomplete="off">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 p-1">
                             <div class="form-group">
                                 <label>Nombre Proceso</label>
-                                <select class="form-control col-lg-12" style="width: 100%;" id="areas_id" name="areas_id"
-                                    required>
+                                <select class="form-control-sm" style="width: 100%;" id="areas_id" name="areas_id" required>
                                     <option value="">-Seleccione-</option>
                                     @foreach ($areas as $areas)
                                         <option value="{{ $areas->id }}">
@@ -35,10 +34,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 p-1">
                             <div class="form-group">
                                 <label>Frecuencia Control</label>
-                                <select class="form-control" style="width: 100%;" id="frecuencia_control_id"
+                                <select class="form-control-sm" style="width: 100%;" id="frecuencia_control_id"
                                     name="frecuencia_control_id" required>
                                     <option value="">-Seleccione-</option>
                                     @foreach ($frecuencia_control as $frecuencia_control)
@@ -49,21 +48,28 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-block bg-gradient-info">Guardar</button>
+                        {{-- <div class="col-lg-2">
+                            <div class="form-group ">
+                                <label>Meta</label>
+                                <input class="form-control tabla_metas" style="width: 100%;" id="meta" name="meta"
+                                    autocomplete="off" required>
+                            </div>
+                        </div> --}}
+                        <div class="col-lg-2 p-1">
+                            <div class="form-group mx-auto" >
+                                <button type="submit" class="btn btn-block bg-gradient-info">Guardar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <div class="content-header">
+    <div class="content-header p-0">
         <form action="{{ route('guardar_proceso') }}" method="POST" id="form-indicadores">
             @csrf
             <input type="hidden" name="method" value="" id="metodo-indicadores">
-            <div class="card card-teal">
+            <div class="card card-blue">
                 <div class="card-header">
                     <h3 class="card-title">Analisis Indicador</h3>
                     <div class="card-tools">
@@ -75,9 +81,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
-                            <div class="form-group">
+                            <div class="form-group p-1">
                                 <label for="inputProjectLeader">Nombre Indicador</label>
-                                <select class="form-control" style="width: 100%;" id="indicadores_id"
+                                <select class="form-control-sm" style="width: 100%;" id="indicadores_id"
                                     name="indicadores_id" required autocomplete="off">
                                     <option value="">-Seleccione-</option>
                                     @foreach ($indicadores as $indicador)
@@ -86,66 +92,76 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group p-1">
                                 <label>Analisis Indicador</label>
-                                <textarea class="form-control" style="width: 100%;" id="analisis_indicador" name="analisis_indicador"
+                                <textarea class="form-control-sm" style="width: 100%;" id="analisis_indicador" name="analisis_indicador"
                                     autocomplete="off" required style="height: 4px;"></textarea>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-5">
                             <div class="row">
-                                <div class="form-group col-lg-5">
+                                <div class="form-group col-lg-3 p-1">
+                                    <label>Meta</label>
+                                    <div class="input-group-append">
+                                        <input class="form-control-sm-border text-center tabla_metas" style="width: 100%;"
+                                            id="meta" name="meta" autocomplete="off" required
+                                            onchange="resultadoEquivalente();">
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-3 p-1">
+                                    <label>Resultado</label>
+                                    <div class="input-group-append">
+                                        <input class="form-control-sm-border text-center tabla_resultados"
+                                            onchange="llamarValueResultado();" style="width: 100%;" id="resultados"
+                                            name="resultados" autocomplete="off" required>
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-3 p-1">
+                                    <label>Equivalencia</label>
+                                    <div class="input-group-append">
+                                        <input readonly class="form-control-sm-border text-center inputEquivalencia"
+                                            style="width: 100%;" id="equivalencia" name="equivalencia" required>
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group-sm col-lg-4 p-1">
                                     <label>Indicador Inverso</label>
-                                    <select class="form-control" style="width: 100%;" id="indicador_inverso"
+                                    <select class="form-control-sm" style="width: 100%;" id="indicador_inverso"
                                         name="indicador_inverso" required>
                                         <option value="">-Selecione-</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-5">
-                                    <label>Resultado</label>
-                                    <input class="form-control tabla_resultados" onchange="llamarValueResultado();"
-                                        style="width: 100%;" id="resultados" name="resultados" autocomplete="off" required>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-5">
-                                    <label>Meta</label>
-                                    <input class="form-control tabla_metas" style="width: 100%;" id="meta" name="meta"
-                                        autocomplete="off" required onchange="resultadoEquivalente();">
-                                </div>
-                                <div class="form-group col-lg-5">
-                                    <label>Equivalencia</label>
-                                    <input readonly class="form-control inputEquivalencia" style="width: 100%;"
-                                        id="equivalencia" name="equivalencia" required>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <button type="reset" class="btn btn-block bg-gradient-warning"
-                                        id="btn-limpiar">Limpiar</button>
+                        <div class="col-3">
+                            <div class="row">
+                                <div class="col-lg-5 p-1">
+                                    <div class="form-group">
+                                        <button type="reset" class="btn btn-block bg-gradient-warning"
+                                            id="btn-limpiar">Limpiar</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-block bg-gradient-info"
-                                        id="btn-guardar">Guardar</button>
+                                <div class="col-lg-5 p-1">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block bg-gradient-info"
+                                            id="btn-guardar">Guardar</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-block bg-gradient-primary" id="btn-editar"
-                                        style="display: none">Editar</button>
+                                <div class="col-lg-5 p-1">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block bg-gradient-primary" id="btn-editar"
+                                            style="display: none">Editar</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-block bg-gradient-danger" id="btn-cancelar"
-                                        style="display: none" onclick="limpiar()">Cancelar</button>
+                                <div class="col-lg-5 p-1">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-block bg-gradient-danger" id="btn-cancelar"
+                                            style="display: none" onclick="limpiar()">Cancelar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -154,8 +170,8 @@
             </div>
         </form>
     </div>
-    <div class="content-header">
-        <div class="card card-teal">
+    <div class="content-header p-0">
+        <div class="card card-blue">
             <div class="card-header">
                 <h3 class="card-title">Visualisador Indicador</h3>
                 <div class="card-tools">
@@ -177,7 +193,7 @@
                                         </div>
                                         <div class="row-10">
                                             <table id="tabla_indicador"
-                                                class="table table-striped table-bordered aligned-middle">
+                                                class="table-sm table-striped table-bordered aligned-middle">
                                                 <thead class="bg-info">
                                                     <tr>
                                                         <th>Nombre Indicador</th>

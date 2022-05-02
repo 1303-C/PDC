@@ -21,7 +21,7 @@
             destroy: true,
             responsive: true,
             processing: true,
-            scrollY: "300px",
+            scrollY: "150px",
             // serverSide: true,
             autoWidth: false,
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
