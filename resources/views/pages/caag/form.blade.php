@@ -25,9 +25,16 @@
                                 </div>
                                 <div class="col-lg-12 p-1">
                                     <div class="form-group">
-                                        <label>Analisis Indicador</label>
-                                        <textarea class="form-control-sm" style="width: 100%;" id="analisis_indicador" name="analisis_indicador"
-                                            autocomplete="off" required style="height: 4px;"></textarea>
+                                        <label>Estado Actividad</label>
+                                        <Select class="form-control-sm col-lg-12" style="width: 100%;" id="ca_estado_id"
+                                            name="ca_estado_id" required>
+                                            <option value="">-Seleccione-</option>
+                                            @foreach ($estados as $estados)
+                                                <option value="{{ $estados->id }}">
+                                                    {{ $estados->estado }}
+                                                </option>
+                                            @endforeach
+                                        </Select>
                                     </div>
                                 </div>
                             </div>
@@ -58,16 +65,9 @@
                                 </div>
                                 <div class="col-lg-6 p-1">
                                     <div class="form-group">
-                                        <label>Estado Actividad</label>
-                                        <Select class="form-control-sm col-lg-12" style="width: 100%;" id="ca_estado_id"
-                                            name="ca_estado_id" required>
-                                            <option value="">-Seleccione-</option>
-                                            @foreach ($estados as $estados)
-                                                <option value="{{ $estados->id }}">
-                                                    {{ $estados->estado }}
-                                                </option>
-                                            @endforeach
-                                        </Select>
+                                        <label>Fecha Reprogramada</label>
+                                        <input class="form-control-sm-boder" style="width: 100%;" id="fecha_reprogramada"
+                                            name="fecha_reprogramada" type="Date" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 p-1">
@@ -79,38 +79,34 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-5">
                             <div class="row">
                                 <div class="col-lg-12 p-1">
                                     <div class="form-group">
-                                        <label>Fecha Reprogramada</label>
-                                        <input class="form-control-sm-boder" style="width: 100%;" id="fecha_reprogramada"
-                                            name="fecha_reprogramada" type="Date" required>
+                                        <label>Analisis Indicador</label>
+                                        <textarea class="form-control-sm" style="width: 100%;" id="analisis_indicador" name="analisis_indicador"
+                                            autocomplete="off" required style="height: 4px;"></textarea>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="row">
-                                <div class="col-lg-6 p-1">
+                                <div class="col-lg-5 p-1">
                                     <div class="form-group">
                                         <button type="reset" class="btn btn-block bg-gradient-warning"
                                             id="btn-limpiar">Limpiar</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 p-1">
+                                <div class="col-lg-5 p-1">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block bg-gradient-info"
                                             id="btn-guardar-gerencia">Guardar</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 p-1">
+                                <div class="col-lg-5 p-1">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block bg-gradient-primary"
                                             id="btn-editar-gerencia" style="display: none">Editar</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 p-1">
+                                <div class="col-lg-5 p-1">
                                     <div class="form-group">
                                         <button type="button" class="btn btn-block bg-gradient-danger"
                                             id="btn-cancelar-gerencia" style="display: none"

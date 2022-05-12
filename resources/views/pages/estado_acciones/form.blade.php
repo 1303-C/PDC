@@ -4,7 +4,7 @@
             @csrf
             <div class="card card-blue">
                 <div class="card-header">
-                    <h3 class="card-title">Estado Acciones Administrador</h3>
+                    <h3 class="card-title">Estado Acciones</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                 class="fas fa-minus"></i>
@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="row">
-                                <div class="col-lg-5 p-1">
+                                <div class="col-lg-6 p-1">
                                     <div class="form-group  ">
                                         <label>Tipo Acciones</label>
                                         <Select class="form-control-sm" style="width: 100%;" id="tipo_acciones_id"
@@ -29,9 +29,9 @@
                                         </Select>
                                     </div>
                                 </div>
-                                <div class="col-lg-7 p-1">
+                                <div class="col-lg-6 p-1">
                                     <div class="form-group">
-                                        <label>Codigo Accion</label>
+                                        <label>Codigo Acción</label>
                                         <input class="form-control-sm-border" style="width: 100%;" id="codigo_accion"
                                             name="codigo_accion" autocomplete="off" required>
                                     </div>
@@ -95,7 +95,7 @@
     <div class="content-header p-0">
         <div class="card card-blue">
             <div class="card-header">
-                <h3 class="card-title">Visualisador De Estado</h3>
+                <h3 class="card-title">Visualizador De Estado</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                     </button>
@@ -117,11 +117,11 @@
                                                 class="table-sm table-striped table-bordered aligned-middle">
                                                 <thead class="bg-info">
                                                     <tr>
-                                                        <th>Tipo Accion</th>
-                                                        <th>Codigo Accion</th>
+                                                        <th>Tipo Acciones</th>
+                                                        <th>Codigo Acción</th>
                                                         <th>Fecha Cierre</th>
                                                         <th>Estado</th>
-                                                        <th> Accion</th>
+                                                        <th> Acción</th>
                                                     </tr>
                                                 </thead>
                                             </table>

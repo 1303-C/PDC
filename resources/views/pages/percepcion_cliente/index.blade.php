@@ -45,11 +45,10 @@
             }, {
                 data: 'calificacion_total',
                 name: 'calificacion_total',
-                render: function(data, type, row) {
-                    return Math.round((row.calificacion + 22) / 1);
-                }
-
-            }, {
+            },{
+                data: 'desempeño',
+                name: 'desempeño',
+            },{
                 class: "editar_proceso",
                 orderable: false,
                 data: null,
@@ -129,16 +128,8 @@
             return promedio;
         }
 
-        function resultadoCalificacionTotal() {
-            const inputCalificacion = document.querySelector('.inputCalificacion').value;
-            const inputCalificacionTotal = document.querySelector('.inputCalificacionTotal');
-            const promedio2 = Number(inputCalificacion) + maxValue;
-            if (promedio2 > 100) {
-                inputCalificacionTotal.setAttribute('value', '100')
-            } else if (promedio2 <= 100) {
-                inputCalificacionTotal.setAttribute('value', promedio2)
-            }
-            return promedio2;
+        function calificacionTotal(data, type, row) {
+            return Math.round((row.calificacion + 22) / 1);
         }
     </script>
 @endsection

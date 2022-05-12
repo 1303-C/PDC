@@ -1,0 +1,14 @@
+body {
+
+    /* display: block;
+    margin:0 auto;
+    max-width: 100%;
+    width: 80%; */
+    height: 650px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("../image/fondocalidadlogos.png");
+
+
+}

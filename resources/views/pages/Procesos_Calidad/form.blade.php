@@ -71,7 +71,7 @@
             <input type="hidden" name="method" value="" id="metodo-indicadores">
             <div class="card card-blue">
                 <div class="card-header">
-                    <h3 class="card-title">Analisis Indicador</h3>
+                    <h3 class="card-title">Análisis Indicador</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="col-5">
                             <div class="row">
-                                <div class="form-group col-lg-3 p-1">
+                                <div class="form-group col-lg-4 p-1">
                                     <label>Meta</label>
                                     <div class="input-group-append">
                                         <input class="form-control-sm-border text-center tabla_metas" style="width: 100%;"
@@ -109,7 +109,7 @@
                                         <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
                                     </div>
                                 </div>
-                                <div class="form-group col-lg-3 p-1">
+                                <div class="form-group col-lg-4 p-1">
                                     <label>Resultado</label>
                                     <div class="input-group-append">
                                         <input class="form-control-sm-border text-center tabla_resultados"
@@ -118,11 +118,11 @@
                                         <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
                                     </div>
                                 </div>
-                                <div class="form-group col-lg-3 p-1">
+                                <div class="form-group col-lg-4 p-1">
                                     <label>Equivalencia</label>
                                     <div class="input-group-append">
                                         <input readonly class="form-control-sm-border text-center inputEquivalencia"
-                                            style="width: 100%;" id="equivalencia" name="equivalencia" required>
+                                            style="width: 100%; background-color: rgba(172, 170, 170, 0.474)" id="equivalencia" name="equivalencia" required>
                                         <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
                                     </div>
                                 </div>
@@ -133,6 +133,17 @@
                                         <option value="">-Selecione-</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-sm col-lg-8 p-1">
+                                    <label for="inputProjectLeader">Nombre Usuario</label>
+                                    <select class="form-control-sm" style="width: 100%;" id="usuarios_id"
+                                        name="usuarios_id" required autocomplete="off">
+                                        <option value="">-Seleccione-</option>
+                                        @foreach ($User as $usuarios)
+                                            <option value="{{ $usuarios->id }}">{{ $usuarios->name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -173,7 +184,7 @@
     <div class="content-header p-0">
         <div class="card card-blue">
             <div class="card-header">
-                <h3 class="card-title">Visualisador Indicador</h3>
+                <h3 class="card-title">Visualizador Indicador</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -196,6 +207,7 @@
                                                 class="table-sm table-striped table-bordered aligned-middle">
                                                 <thead class="bg-info">
                                                     <tr>
+                                                        <th>Nombre Usuario</th>
                                                         <th>Nombre Indicador</th>
                                                         <th>Nombre Proceso</th>
                                                         <th>Analisis Indicador</th>
@@ -204,7 +216,7 @@
                                                         <th>Meta</th>
                                                         <th>Equivalencia</th>
                                                         <th>Fecha Creacion</th>
-                                                        <th> Accion</th>
+                                                        <th>Acción</th>
                                                     </tr>
                                                 </thead>
                                             </table>

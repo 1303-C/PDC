@@ -5,7 +5,7 @@
             <input type="hidden" name="method" value="" id="metodo-indicadores_dos">
             <div class="card card-blue">
                 <div class="card-header">
-                    <h3 class="card-title">Cumplimiento Compromisos Gestion Del Riesgo</h3>
+                    <h3 class="card-title">Cumplimiento Compromisos Gestión Del Riesgo</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                 class="fas fa-minus"></i>
@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="col-lg-6 p-1">
                                     <div class="form-group">
-                                        <label>Fecha Evaluacion</label>
+                                        <label>Fecha Evaluación</label>
                                         <input class="form-control-sm-border" style="width: 100%;" id="fecha_evaluacion"
                                             name="fecha_evaluacion" type="Date" required>
                                     </div>
@@ -33,7 +33,7 @@
                                 <div class="col-lg-12 p-1">
                                     <div class="form-group">
                                         <label>Evidencia Cumplimiento o Avance</label>
-                                        <textarea class="form-control-sm-border" style="width: 100%;" id="evidencia_avance" name="evidencia_avance"
+                                        <textarea class="form-control-sm" style="width: 100%;" id="evidencia_avance" name="evidencia_avance"
                                             autocomplete="off" required style="height: 4px;"></textarea>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-lg-6 p-1">
                                     <div class="form-group">
-                                        <label>Fecha Real Evaluacion</label>
+                                        <label>Fecha Real Evaluación</label>
                                         <input class="form-control-sm-border" style="width: 100%;"
                                             id="fecha_real_evaluacion" name="fecha_real_evaluacion" type="Date" required>
                                     </div>
@@ -136,7 +136,7 @@
     <div class="content-header p-0">
         <div class="card card-blue">
             <div class="card-header">
-                <h3 class="card-title">Visualisador De Estado</h3>
+                <h3 class="card-title">Visualizador De Estado</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                     </button>
@@ -159,14 +159,14 @@
                                                 <thead class="bg-info">
                                                     <tr>
                                                         <th>ID Control</th>
-                                                        <th>Fecha Evaluacion</th>
+                                                        <th>Fecha Evaluación</th>
                                                         <th>Fecha Actual</th>
-                                                        <th>Fecha Real Evaluacion</th>
+                                                        <th>Fecha Real Evaluación</th>
                                                         <th>Frecuencia Control</th>
                                                         <th>Estado</th>
                                                         <th>Porcentaje Avance</th>
                                                         <th>Evidencia Avance</th>
-                                                        <th>Accion</th>
+                                                        <th>Acción</th>
                                                     </tr>
                                                 </thead>
                                             </table>

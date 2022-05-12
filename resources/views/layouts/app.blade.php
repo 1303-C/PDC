@@ -18,18 +18,20 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/logout.css') }}" rel="stylesheet">
 </head>
 <body>
-        <nav class="navbar navbar-dark" style="background-color: #0e7cca;">
+    
+        {{-- <nav class="navbar navbar-dark" style="background-color: #0e7cca;">
             <div class="container h1 text-center">
                 <b>Mando</b>
             </div>
-                {{-- <a class="navbar-brand h1">
+                <a class="navbar-brand h1">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button> --}}
-                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                </button> 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
@@ -70,10 +72,9 @@
                             </li>
                         @endguest
                     </ul>
-                </div> --}}           
-        </nav>
-
-        <main class="py-4">
+                </div>          
+        </nav>  --}}
+        <main class="py-lg-5">
             @yield('content')
         </main>
 

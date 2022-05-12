@@ -16,6 +16,7 @@ class analisis_indicadores extends Model
         'resultados',
         'equivalencia',
         'indicadores_id',
+        'usuarios_id',
         'desempeño',
         'created_at'
     ];

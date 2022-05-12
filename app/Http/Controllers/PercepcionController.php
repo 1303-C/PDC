@@ -40,8 +40,13 @@ class PercepcionController extends Controller
     public function store(Request $request)
     {
         $datos = $request->all();
+        $calificacionTotal  = procesos::avg('calificacion');
+        $datos['calificacion_total']=$calificacionTotal;
+        $desempeño = $calificacionTotal/5*100;
+        $datos['desempeño'] = $desempeño;
         procesos::create($datos);
         return redirect('/pages/percepcion_cliente');
+        
     }
 
     /**

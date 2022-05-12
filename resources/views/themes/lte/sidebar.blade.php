@@ -1,8 +1,8 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: rgb(15,41,58,255)">    
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: rgb(15,41,58,255)">
     <!-- Brand Logo -->
     <a href="../assets/lte/index3.html" class="brand-link">
-        <img src="../assets/lte/dist/img/Mando.png"  class="brand-image img-circle elevation-2"
-            style="opacity: .8">
+        <img src="../assets/lte/dist/img/MandoMini.png" class="brand-image img-circle elevation-2"
+            style="height: 40px; width: 40px">
         <span class="brand-text font-weight-light">
             <h4>Mando</h4>
         </span>

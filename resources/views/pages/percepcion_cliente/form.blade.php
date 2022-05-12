@@ -4,7 +4,7 @@
             @csrf
             <div class="card card-blue">
                 <div class="card-header">
-                    <h3 class="card-title">Percepcion Cliente Interno</h3>
+                    <h3 class="card-title">Percepción Cliente Interno</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                 class="fas fa-minus"></i>
@@ -27,7 +27,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Razon Calificacion</label>
+                                <label>Razón Calificación</label>
                                 <textarea class="form-control-sm" style="width: 100%;" id="razon_calificacion" name="razon_calificacion"
                                     autocomplete="off" required style="height: 4px;"></textarea>
                             </div>
@@ -64,7 +64,7 @@
                                 <div class="form-group col-lg-4 p-1">
                                     <label>Calificacion</label>
                                     <input readonly class="form-control-sm-border inputCalificacion text-center"
-                                        style="width: 100%;" id="calificacion" name="calificacion" required>
+                                        style="width: 100%; background-color: rgba(172, 170, 170, 0.474)" id="calificacion" name="calificacion" required>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
     <div class="content-header p-0">
         <div class="card card-blue">
             <div class="card-header">
-                <h3 class="card-title">Visualisador Percepcion Cliente Interno</h3>
+                <h3 class="card-title">Visualizador Percepcion Cliente Interno</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -127,13 +127,13 @@
                                                 <thead class="bg-info">
                                                     <tr>
                                                         <th>Proceso</th>
-                                                        <th>Razon Calificacion</th>
+                                                        <th>Razón Calificación</th>
                                                         <th>Efectividad</th>
                                                         <th>oportunidad</th>
-                                                        <th>Calificacion</th>
-                                                        <th>Calificacion Total</th>
-                                                        {{-- <th>Desempeño</th> --}}
-                                                        <th>Accion</th>
+                                                        <th>Calificación</th>
+                                                        <th>Calificación Total</th>
+                                                        <th>Desempeño</th>
+                                                        <th>Acción</th>
                                                     </tr>
                                                 </thead>
                                             </table>

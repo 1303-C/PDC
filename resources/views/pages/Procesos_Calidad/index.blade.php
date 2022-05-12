@@ -37,6 +37,9 @@
                 "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             ajax: "{{ route('getlistado_indicadores') }}",
             columns: [{
+                data: 'nombre_usuario',
+                name: 'nombre_usuario',
+            },{
                 data: 'nombre_indicador',
                 name: 'nombre_indicador',
             }, {

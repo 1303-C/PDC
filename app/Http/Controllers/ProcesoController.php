@@ -8,6 +8,7 @@ use App\Models\estados;
 use App\Models\frecuencia_control;
 use App\Models\indicadores;
 use App\Models\nombre_proceso;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,11 +24,12 @@ class ProcesoController extends Controller
     public function index(Request $request)
     {
         $analisis_indicadores = analisis_indicadores::get();
+        $User = User::get();
         $areas = areas::get();
         $estados = estados::get();
         $indicadores = indicadores::get();
         $frecuencia_control = frecuencia_control::get();
-        return view('pages.Procesos_Calidad.index', compact('analisis_indicadores', 'areas', 'estados', 'indicadores', 'frecuencia_control'));
+        return view('pages.Procesos_Calidad.index', compact('analisis_indicadores', 'areas', 'estados', 'indicadores', 'frecuencia_control', 'User'));
     }
 
     /* public function getIndicadores(){
@@ -121,7 +123,7 @@ class ProcesoController extends Controller
     public function getlistado_indicadores()
     {
         try {
-            $analisis_indicadores = analisis_indicadores::leftjoin("t_indicadores AS indicadores", "t_analisis_indicadores.indicadores_id", "=", "indicadores.id")->leftjoin("t_areas AS areas", "indicadores.areas_id", "=", "areas.id")->get(['t_analisis_indicadores.*', 'indicadores.nombre_indicador AS nombre_indicador', 'areas.nombre_areas AS areas']);
+            $analisis_indicadores = analisis_indicadores::leftjoin("t_indicadores AS indicadores", "t_analisis_indicadores.indicadores_id", "=", "indicadores.id")->leftjoin("t_areas AS areas", "indicadores.areas_id", "=", "areas.id")->leftjoin("t_usuarios AS usuarios", "t_analisis_indicadores.usuarios_id", "=", "usuarios.id")->get(['t_analisis_indicadores.*', 'indicadores.nombre_indicador AS nombre_indicador', 'areas.nombre_areas AS areas','usuarios.name AS nombre_usuario']);
             
             $response = ['data' => $analisis_indicadores];          
         } catch (\Throwable $th) {
