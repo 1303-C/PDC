@@ -101,10 +101,6 @@
             tabla.columns($(this).data('index')).search(this.value).draw();
         })
 
-
-
-
-
         $('#tabla_indicador tbody').on('click', 'td.editar_indicador', function() {
             var tr = $(this).closest('tr');
             var row = $('#tabla_indicador').DataTable().row(tr);
@@ -165,7 +161,7 @@
                 inputEquivalencia.setAttribute('value', multiplicacion)
             }
 
-            return multiplicacion;
+            return multiplicacion;    
         }
     </script>
 @endsection

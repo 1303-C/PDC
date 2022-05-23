@@ -56,7 +56,7 @@
                             </div>
                         </div> --}}
                         <div class="col-lg-2 p-1">
-                            <div class="form-group mx-auto" >
+                            <div class="form-group mx-auto">
                                 <button type="submit" class="btn btn-block bg-gradient-info">Guardar</button>
                             </div>
                         </div>
@@ -81,21 +81,38 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
-                            <div class="form-group p-1">
-                                <label for="inputProjectLeader">Nombre Indicador</label>
-                                <select class="form-control-sm" style="width: 100%;" id="indicadores_id"
-                                    name="indicadores_id" required autocomplete="off">
-                                    <option value="">-Seleccione-</option>
-                                    @foreach ($indicadores as $indicador)
-                                        <option value="{{ $indicador->id }}">{{ $indicador->nombre_indicador }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group p-1">
-                                <label>Analisis Indicador</label>
-                                <textarea class="form-control-sm" style="width: 100%;" id="analisis_indicador" name="analisis_indicador"
-                                    autocomplete="off" required style="height: 4px;"></textarea>
+                            <div class="row">
+                                <div class="form-group p-1">
+                                    <label for="inputProjectLeader">Nombre Indicador</label>
+                                    <select class="form-control-sm" style="width: 100%;" id="indicadores_id"
+                                        name="indicadores_id" required autocomplete="off">
+                                        <option value="">-Seleccione-</option>
+                                        @foreach ($indicadores as $indicador)
+                                            <option value="{{ $indicador->id }}">{{ $indicador->nombre_indicador }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-5 p-1">
+                                    <label>Indicador Inverso</label>
+                                    <select class="form-control-sm" style="width: 100%;" id="indicador_inverso"
+                                        name="indicador_inverso" required>
+                                        <option value="">-Selecione-</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-7 p-1">
+                                    <label for="inputProjectLeader">Nombre Lider</label>
+                                    <select class="form-control-sm" style="width: 100%;" id="usuarios_id" name="usuarios_id"
+                                        required autocomplete="off">
+                                        <option value="">-Seleccione-</option>
+                                        @foreach ($User as $usuarios)
+                                            <option value="{{ $usuarios->id }}">{{ $usuarios->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="col-5">
@@ -122,53 +139,39 @@
                                     <label>Equivalencia</label>
                                     <div class="input-group-append">
                                         <input readonly class="form-control-sm-border text-center inputEquivalencia"
-                                            style="width: 100%; background-color: rgba(172, 170, 170, 0.474)" id="equivalencia" name="equivalencia" required>
+                                            style="width: 100%; background-color: rgba(172, 170, 170, 0.474)"
+                                            id="equivalencia" name="equivalencia" required>
                                         <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
                                     </div>
                                 </div>
-                                <div class="form-group-sm col-lg-4 p-1">
-                                    <label>Indicador Inverso</label>
-                                    <select class="form-control-sm" style="width: 100%;" id="indicador_inverso"
-                                        name="indicador_inverso" required>
-                                        <option value="">-Selecione-</option>
-                                        <option value="Si">Si</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-                                <div class="form-group-sm col-lg-8 p-1">
-                                    <label for="inputProjectLeader">Nombre Usuario</label>
-                                    <select class="form-control-sm" style="width: 100%;" id="usuarios_id"
-                                        name="usuarios_id" required autocomplete="off">
-                                        <option value="">-Seleccione-</option>
-                                        @foreach ($User as $usuarios)
-                                            <option value="{{ $usuarios->id }}">{{ $usuarios->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                <div class="form-group col-lg-12 p-1">
+                                    <label>Analisis Indicador</label>
+                                    <textarea class="form-control-sm" style="width: 100%; height: auto;" id="analisis_indicador" name="analisis_indicador"
+                                        autocomplete="off" required></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="row">
-                                <div class="col-lg-5 p-1">
+                                <div class="col-lg-6 p-1">
                                     <div class="form-group">
                                         <button type="reset" class="btn btn-block bg-gradient-warning"
                                             id="btn-limpiar">Limpiar</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-5 p-1">
+                                <div class="col-lg-6 p-1">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block bg-gradient-info"
                                             id="btn-guardar">Guardar</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-5 p-1">
+                                <div class="col-lg-6 p-1">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block bg-gradient-primary" id="btn-editar"
                                             style="display: none">Editar</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-5 p-1">
+                                <div class="col-lg-6 p-1">
                                     <div class="form-group">
                                         <button type="button" class="btn btn-block bg-gradient-danger" id="btn-cancelar"
                                             style="display: none" onclick="limpiar()">Cancelar</button>
@@ -207,7 +210,7 @@
                                                 class="table-sm table-striped table-bordered aligned-middle">
                                                 <thead class="bg-info">
                                                     <tr>
-                                                        <th>Nombre Usuario</th>
+                                                        <th>Nombre Lider</th>
                                                         <th>Nombre Indicador</th>
                                                         <th>Nombre Proceso</th>
                                                         <th>Analisis Indicador</th>
