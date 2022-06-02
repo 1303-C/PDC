@@ -11,12 +11,12 @@ class analisis_indicadores extends Model
     protected $table = 't_analisis_indicadores';
     protected $fillable = [
         'analisis_indicador',
-        'indicador_inverso',
-        'meta',
+        'indicador_inverso',       
         'resultados',
         'equivalencia',
         'indicadores_id',
         'usuarios_id',
+        'metas_id',
         'desempeño',
         'created_at'
     ];

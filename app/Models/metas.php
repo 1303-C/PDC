@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class metas_indicador extends Model
+class metas extends Model
 {
-    protected $table = 't_metas_indicador';
+    protected $table = 't_metas';
     protected $fillable= [
-        'mes',
-        'año',
         'meta',
-        't_indicadores_id',
+        'indicadores_id'
     ];
+    protected $primaryKey = 'id';
     use HasFactory;
 }

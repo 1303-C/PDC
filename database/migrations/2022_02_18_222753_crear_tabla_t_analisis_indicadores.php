@@ -27,6 +27,8 @@ class CrearTablaTAnalisisIndicadores extends Migration
             $table->foreign('usuarios_id','fk_usuarios')->references('id')->on('t_usuarios')->onDelete('restrict')->onUpdate('restrict');
             $table->unsignedInteger('estados_id');
             $table->foreign('estados_id','fk_estados')->references('id')->on('t_estados')->onDelete('restrict')->onUpdate('restrict');
+            $table->unsignedInteger('metas_id');
+            $table->foreign('metas_id','fk_metas')->references('id')->on('t_metas')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

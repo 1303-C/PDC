@@ -16,6 +16,7 @@ class CrearTablaTAreas extends Migration
         Schema::create('t_areas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre_areas',70);
+            $table->string('nombre_empresa',70);
         });
     }
 

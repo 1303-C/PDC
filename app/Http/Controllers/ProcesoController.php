@@ -7,7 +7,7 @@ use App\Models\areas;
 use App\Models\estados;
 use App\Models\frecuencia_control;
 use App\Models\indicadores;
-use App\Models\nombre_proceso;
+use App\Models\metas;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
@@ -29,7 +29,8 @@ class ProcesoController extends Controller
         $estados = estados::get();
         $indicadores = indicadores::get();
         $frecuencia_control = frecuencia_control::get();
-        return view('pages.Procesos_Calidad.index', compact('analisis_indicadores', 'areas', 'estados', 'indicadores', 'frecuencia_control', 'User'));
+        $metas = metas::get();
+        return view('pages.Procesos_Calidad.index', compact('analisis_indicadores', 'areas', 'estados', 'indicadores', 'frecuencia_control', 'User', 'metas'));
     }
 
     /* public function getIndicadores(){
@@ -59,9 +60,12 @@ class ProcesoController extends Controller
     public function guardar_indicador(Request $request)
     {
         $datos = $request->all();
-        indicadores::create($datos);
+        $indicador = indicadores::create($datos);
+        $datos["indicadores_id"] = $datos["indicadores_id"]=$indicador->id;
+        metas::create($datos);
         return redirect('pages/Procesos_Calidad');
     }
+
     public function guardar_proceso(Request $request)
     {
         $datos = $request->all();
@@ -114,9 +118,11 @@ class ProcesoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function eliminar($id)
+    public function eliminar(Request $request, $id)
     {
-        //
+        dd($request->all());
+        // analisis_indicadores::findOrFail($id)->delete();
+        // return redirect('pages/Procesos_Calidad');
     }
     
 

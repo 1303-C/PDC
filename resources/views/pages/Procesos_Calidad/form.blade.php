@@ -21,7 +21,7 @@
                                     name="nombre_indicador" required autocomplete="off">
                             </div>
                         </div>
-                        <div class="col-lg-4 p-1">
+                        <div class="col-lg-3 p-1">
                             <div class="form-group">
                                 <label>Nombre Proceso</label>
                                 <select class="form-control-sm" style="width: 100%;" id="areas_id" name="areas_id" required>
@@ -34,7 +34,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-3 p-1">
+                        <div class="col-lg-2 p-1">
                             <div class="form-group">
                                 <label>Frecuencia Control</label>
                                 <select class="form-control-sm" style="width: 100%;" id="frecuencia_control_id"
@@ -48,13 +48,15 @@
                                 </select>
                             </div>
                         </div>
-                        {{-- <div class="col-lg-2">
-                            <div class="form-group ">
-                                <label>Meta</label>
-                                <input class="form-control tabla_metas" style="width: 100%;" id="meta" name="meta"
-                                    autocomplete="off" required>
+                        <div class="form-group col-lg-2 p-1">
+                            <label>Meta</label>
+                            <div class="input-group-append">
+                                <input class="form-control-sm-border text-center tabla_metas" style="width: 100%;"
+                                    id="id" name="meta" autocomplete="off" required
+                                    onchange="resultadoEquivalente();">
+                                <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="col-lg-2 p-1">
                             <div class="form-group mx-auto">
                                 <button type="submit" class="btn btn-block bg-gradient-info">Guardar</button>
@@ -82,7 +84,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="row">
-                                <div class="form-group p-1">
+                                <div class="form-group col-12 p-1">
                                     <label for="inputProjectLeader">Nombre Indicador</label>
                                     <select class="form-control-sm" style="width: 100%;" id="indicadores_id"
                                         name="indicadores_id" required autocomplete="off">
@@ -119,12 +121,14 @@
                             <div class="row">
                                 <div class="form-group col-lg-4 p-1">
                                     <label>Meta</label>
-                                    <div class="input-group-append">
-                                        <input class="form-control-sm-border text-center tabla_metas" style="width: 100%;"
-                                            id="meta" name="meta" autocomplete="off" required
-                                            onchange="resultadoEquivalente();">
-                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
-                                    </div>
+                                    <select class="form-control-sm" style="width: 100%;" id="metas_id"
+                                        name="metas_id" required autocomplete="off">
+                                        <option value="">-Seleccione-</option>
+                                        @foreach ($metas as $metas)
+                                            <option value="{{ $metas->id }}">{{ $metas->meta }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group col-lg-4 p-1">
                                     <label>Resultado</label>
@@ -219,7 +223,8 @@
                                                         <th>Meta</th>
                                                         <th>Equivalencia</th>
                                                         <th>Fecha Creacion</th>
-                                                        <th>Acción</th>
+                                                        <th>Acciónes1</th>
+                                                        <th>Acciónes2</th>
                                                     </tr>
                                                 </thead>
                                             </table>

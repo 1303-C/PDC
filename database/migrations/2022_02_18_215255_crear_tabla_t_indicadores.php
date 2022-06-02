@@ -16,6 +16,7 @@ class CrearTablaTIndicadores extends Migration
         Schema::create('t_indicadores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre_indicador',100);
+            // $table->string('meta',45);
             $table->unsignedInteger('frecuencia_control_id');
             $table->foreign('frecuencia_control_id','fk_frecuenciacontrol')->references('id')->on('t_frecuencia_controles')->onDelete('restrict')->onUpdate('restrict');
             $table->unsignedInteger('areas_id');

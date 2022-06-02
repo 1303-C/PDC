@@ -31,6 +31,7 @@ Route::get('/pages/Procesos_Calidad', [ProcesoController::class, 'index'])->name
 Route::post('/pages/Procesos_Calidad/guardaruno', [ProcesoController::class, 'guardar_indicador'])->name('guardar_indicador');
 Route::post('/pages/Procesos_Calidad/guardardos', [ProcesoController::class, 'guardar_proceso'])->name('guardar_proceso');
 Route::post('/pages/Procesos_Calidad/actualizar/{id}', [ProcesoController::class, 'actualizar'])->name('actualizar_proceso');
+Route::delete('/pages/Procesos_Calidad/eliminar_indicador/{id}', [ProcesoController::class, 'eliminar'])->name('eliminar_proceso');
 Route::get('/pages/Procesos_Calidad/listado_indicadores',[ProcesoController::class, 'getlistado_indicadores'])->name('getlistado_indicadores');
 
 /*Percepcion_Cliente*/

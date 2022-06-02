@@ -39,7 +39,6 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
-
         @include('themes.lte.footer')
     </div>
     <!-- ./wrapper -->
