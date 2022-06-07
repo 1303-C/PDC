@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-lg-12 p-1">
                                     <div class="form-group">
-                                        <label>Evidencia Cumplimiento o Avance</label>
+                                        <label>Evidencia Cumplimiento</label>
                                         <textarea class="form-control-sm" style="width: 100%;" id="evidencia_avance" name="evidencia_avance"
                                             autocomplete="off" required style="height: 4px;"></textarea>
                                     </div>

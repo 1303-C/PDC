@@ -9,6 +9,7 @@ use App\Models\frecuencia_control;
 use App\Models\indicadores;
 use App\Models\metas;
 use App\Models\User;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -62,7 +63,9 @@ class ProcesoController extends Controller
         $datos = $request->all();
         $indicador = indicadores::create($datos);
         $datos["indicadores_id"] = $datos["indicadores_id"]=$indicador->id;
+        $datos['mes'] = now()->format('M');
         metas::create($datos);
+        // dd($datos);
         return redirect('pages/Procesos_Calidad');
     }
 
@@ -118,11 +121,11 @@ class ProcesoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function eliminar(Request $request, $id)
+    public function destroy($id)
     {
-        dd($request->all());
-        // analisis_indicadores::findOrFail($id)->delete();
-        // return redirect('pages/Procesos_Calidad');
+        // return $id;
+        analisis_indicadores::findOrFail($id)->delete();
+        return $id;
     }
     
 

@@ -50,8 +50,9 @@ var tabla_indicador = $('#tabla_indicador').DataTable({
     }, {
         data: 'created_at',
         name: 'created_at',
-        render: function (data, type, row) {
-            return moment(data).format('DD/MM/YYYY');
+        render: function (data) {
+            moment.locale('es');
+            return moment(data).format('MMMM');
         }
     }, {
         class: "editar_indicador",
@@ -89,6 +90,11 @@ $("#filtro_busqueda").keyup(function () {
     tabla.columns($(this).data('index')).search(this.value).draw();
 })
 
+tabla = $('#tabla_indicador').DataTable();
+$("#filtro_busqueda_fecha").keyup(function () {
+    tabla.columns($(this).data('index')).search(this.value).draw();
+})
+
 $('#tabla_indicador tbody').on('click', 'td.editar_indicador', function () {
     var tr = $(this).closest('tr');
     var row = $('#tabla_indicador').DataTable().row(tr);
@@ -115,16 +121,16 @@ $('#tabla_indicador tbody').on('click', 'td.eliminar_indicador', function () {
     var tr = $(this).closest('tr');
     var row = $('#tabla_indicador').DataTable().row(tr);
     var d = row.data();
-    datos = {};
-    datos['id'] = d.id;
+    console.log(d);
+    // datos = {};
+    // datos['id'] = d.id;
     $.ajax({
         type: 'DELETE',
         url: "/pages/Procesos_Calidad/eliminar_indicador/" + d.id,
-        // headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-        data: datos,
-        
+        // data: datos,
         success: function (msg) {
-            alert('Se ha eliminado el indicador');
+            alert('Se ha eliminado el indicador' + msg);
+            window.location = "/pages/Procesos_Calidad";
         },
         error: function (msg) {
             alert('Hubo un error al eliminar')

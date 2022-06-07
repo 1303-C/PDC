@@ -64,7 +64,8 @@
                                 <div class="form-group col-lg-4 p-1">
                                     <label>Calificacion</label>
                                     <input readonly class="form-control-sm-border inputCalificacion text-center"
-                                        style="width: 100%; background-color: rgba(172, 170, 170, 0.474)" id="calificacion" name="calificacion" required>
+                                        style="width: 100%; background-color: rgba(172, 170, 170, 0.474)" id="calificacion"
+                                        name="calificacion" required>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +133,7 @@
                                                         <th>oportunidad</th>
                                                         <th>Calificación</th>
                                                         <th>Calificación Total</th>
-                                                        <th>Desempeño</th>
+                                                        {{-- <th>Desempeño</th> --}}
                                                         <th>Acción</th>
                                                     </tr>
                                                 </thead>
@@ -141,6 +142,17 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label>Desempeño</label>
+                            <select readonly class="form-control" style="width: 100%;" id="desempeño" name="desempeño"
+                                required>
+                                @foreach ($procesos as $procesos)
+                                    <option value={{ $procesos->id }}>
+                                        {{ $procesos->desempeño }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -51,9 +51,8 @@
                         <div class="form-group col-lg-2 p-1">
                             <label>Meta</label>
                             <div class="input-group-append">
-                                <input class="form-control-sm-border text-center tabla_metas" style="width: 100%;"
-                                    id="id" name="meta" autocomplete="off" required
-                                    onchange="resultadoEquivalente();">
+                                <input class="form-control-sm-border text-center tabla_metas" style="width: 100%;" id="id"
+                                    name="meta" autocomplete="off" required onchange="resultadoEquivalente();">
                                 <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
                             </div>
                         </div>
@@ -121,8 +120,8 @@
                             <div class="row">
                                 <div class="form-group col-lg-4 p-1">
                                     <label>Meta</label>
-                                    <select class="form-control-sm" style="width: 100%;" id="metas_id"
-                                        name="metas_id" required autocomplete="off">
+                                    <select class="form-control-sm" style="width: 100%;" id="metas_id" name="metas_id"
+                                        required autocomplete="off">
                                         <option value="">-Seleccione-</option>
                                         @foreach ($metas as $metas)
                                             <option value="{{ $metas->id }}">{{ $metas->meta }}
@@ -249,6 +248,11 @@
                                         </option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="filtro_busqueda_fecha">Bucar Fecha</label>
+                                <input type="text" name="filtro_busqueda_fecha" id="filtro_busqueda_fecha" class="form-control mx-1"
+                                    placeholder="Buscar.." data-index="8">
                             </div>
                         </div>
                     </div>

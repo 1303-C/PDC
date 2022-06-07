@@ -10,6 +10,7 @@ class metas extends Model
     protected $table = 't_metas';
     protected $fillable= [
         'meta',
+        'mes',
         'indicadores_id'
     ];
     protected $primaryKey = 'id';

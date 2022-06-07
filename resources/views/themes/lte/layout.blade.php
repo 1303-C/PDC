@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titulo', 'Dashboard')</title>
+    <link rel="shortcut icon" href={{ asset('assets/lte/dist/img/MandoMini.png') }}>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -14,7 +15,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../assets/lte/dist/css/adminlte.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css"> --}}
     @yield('css')
 </head>
 

@@ -1,5 +1,6 @@
 <?php
 
+use Cron\MonthField;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +17,7 @@ class CrearTablaTMetas extends Migration
         Schema::create('t_metas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('meta',45);
+            $table->string('mes',45);
             $table->unsignedInteger('indicadores_id');
             $table->foreign('indicadores_id','fk_indicadores_meta')->references('id')->on('t_indicadores')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();

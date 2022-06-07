@@ -67,14 +67,14 @@
                                     <div class="form-group">
                                         <label>Fecha Reprogramada</label>
                                         <input class="form-control-sm-boder" style="width: 100%;" id="fecha_reprogramada"
-                                            name="fecha_reprogramada" type="Date" required>
+                                            name="fecha_reprogramada" type="Date">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 p-1">
                                     <div class="form-group">
                                         <label>Fecha Cierre</label>
                                         <input class="form-control-sm-border" style="width: 100%;" id="fecha_cierre"
-                                            name="fecha_cierre" type="Date" required>
+                                            name="fecha_cierre" type="Date" >
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                             <div class="row">
                                 <div class="col-lg-12 p-1">
                                     <div class="form-group">
-                                        <label>Analisis Indicador</label>
+                                        <label>Evidencia Cumplimiento</label>
                                         <textarea class="form-control-sm" style="width: 100%;" id="analisis_indicador" name="analisis_indicador"
                                             autocomplete="off" required style="height: 4px;"></textarea>
                                     </div>
