@@ -1,4 +1,4 @@
-var tabla_indicador = $('#tabla_cumplimiento_compromisos').DataTable({
+$('#tabla_cumplimiento_compromisos').DataTable({
     destroy: true,
     responsive: true,
     processing: true,
@@ -7,7 +7,7 @@ var tabla_indicador = $('#tabla_cumplimiento_compromisos').DataTable({
     autoWidth: false,
     dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-    ajax: "/pages/ccgr/listado_cumplimientoCompromisos",
+    ajax: "../pages/ccgr/listado_cumplimientoCompromisos",
     columns: [{
         data: 'id_control',
         name: 'id_control',
@@ -54,13 +54,26 @@ var tabla_indicador = $('#tabla_cumplimiento_compromisos').DataTable({
         [5, 10, 25, 50, 75, 100, "All"]
     ],
 
+    'language': {
+        'lengthMenu': 'Mostrar _MENU_ registros por página',
+        'zeroRecords': 'No hay registros',
+        'info': 'Mostrando página _PAGE_ de _PAGES_',
+        'infoEmpty': 'No hay registros disponibles',
+        'infoFiltered': '(filtrado de _MAX_ registros totales)',
+        'search': 'Buscar:',
+        'paginate': {
+            'next': 'Siguiente',
+            'previous': 'Anterior'
+        }
+    }  
+
 });
 
 $('#tabla_cumplimiento_compromisos tbody').on('click', 'td.editar_cumplimiento_compromisos', function() {
     var tr = $(this).closest('tr');
     var row = $('#tabla_cumplimiento_compromisos').DataTable().row(tr);
     var d = row.data();
-    $('#form-cumplimientoCompromisos').attr("action", "http://pdc.test/pages/ccgr/update/" + d.id);
+    $('#form-cumplimientoCompromisos').attr("action", "../pages/ccgr/update/" + d.id);
     $('#id_control').val(d.id_control);
     $('#fecha_evaluacion').val(d.fecha_evaluacion);
     $('#fecha_actual').val(d.fecha_actual);

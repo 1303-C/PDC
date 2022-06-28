@@ -4,9 +4,8 @@
 @endsection
 
 @section('css')
-
     <meta name="csrf-token" content={{ csrf_token() }} />
-    <link href="{{ asset('css/analisis_indicador.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/crear_indicador.css') }}" rel="stylesheet">
     <link href={{ asset('assets/lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }} rel="stylesheet" />
     <link href={{ asset('assets/lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}
         rel="stylesheet" />
@@ -31,10 +30,12 @@
     <script src={{ asset('assets/lte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}></script>
     <script src={{ asset('assets/lte/plugins/moment/moment.min.js') }}></script>
     <script src={{ asset('assets/lte/plugins/moment/moment-with-locales.min.js') }}></script>
-    <script src={{ asset('js/analisis_indicador.js') }}></script>
+    <script src={{ asset('js/crear_indicador.js') }}></script>
 @endsection
 
 @section('contenido')
     @include('pages.Procesos_Calidad.header')
-    @include('pages.Procesos_Calidad.form')
+    @include('pages.Procesos_Calidad.crearindicador')
+    @include('pages.Procesos_Calidad.modal-crearindicador')
+    @include('pages.Procesos_Calidad.modal-editarindicador')
 @endsection

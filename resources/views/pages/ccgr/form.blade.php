@@ -117,7 +117,7 @@
                                 <div class="col-lg-6 p-1">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block bg-gradient-primary" id="btn-editar-compromiso"
-                                            style="display: none">Editar</button>
+                                            style="display: none">Actualizar</button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 p-1">

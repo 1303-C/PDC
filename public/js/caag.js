@@ -1,4 +1,4 @@
-var tabla_indicador = $('#tabla_actividades_gerencia').DataTable({
+$('#tabla_actividades_gerencia').DataTable({
     destroy: true,
     responsive: true,
     processing: true,
@@ -7,7 +7,7 @@ var tabla_indicador = $('#tabla_actividades_gerencia').DataTable({
     autoWidth: false,
     dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-    ajax: "/pages/caag/listado_actividadesGerencia",
+    ajax: "../pages/caag/listado_actividadesGerencia",
     columns: [{
         data: 'Actividades',
         name: 'Actividades',
@@ -15,7 +15,7 @@ var tabla_indicador = $('#tabla_actividades_gerencia').DataTable({
         data: 'fecha_programada',
         name: 'fecha_programada',
     }, {
-        data: 'fecha_cierre', 
+        data: 'fecha_cierre',
         name: 'fecha_cierre',
     }, {
         data: 'porcentaje',
@@ -49,14 +49,27 @@ var tabla_indicador = $('#tabla_actividades_gerencia').DataTable({
         [5, 10, 25, 50, 75, 100, -1],
         [5, 10, 25, 50, 75, 100, "All"]
     ],
+    
+    'language': {
+        'lengthMenu': 'Mostrar _MENU_ registros por página',
+        'zeroRecords': 'No hay registros',
+        'info': 'Mostrando página _PAGE_ de _PAGES_',
+        'infoEmpty': 'No hay registros disponibles',
+        'infoFiltered': '(filtrado de _MAX_ registros totales)',
+        'search': 'Buscar:',
+        'paginate': {
+            'next': 'Siguiente',
+            'previous': 'Anterior'
+        }
+    }
 
 });
 
-$('#tabla_actividades_gerencia tbody').on('click', 'td.editar_actividades_gerencia', function() {
+$('#tabla_actividades_gerencia tbody').on('click', 'td.editar_actividades_gerencia', function () {
     var tr = $(this).closest('tr');
     var row = $('#tabla_actividades_gerencia').DataTable().row(tr);
     var d = row.data();
-    $('#form-actividadesGerencia').attr("action", "http://pdc.test/pages/caag/update/" + d.id);
+    $('#form-actividadesGerencia').attr("action", "../pages/caag/update/" + d.id);
     $('#Actividades').val(d.Actividades);
     $('#fecha_programada').val(d.fecha_programada);
     $('#fecha_cierre').val(d.fecha_cierre);

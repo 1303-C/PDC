@@ -43,16 +43,16 @@ class LoginController extends Controller
 
 
    protected function credentials(Request $request)
-    {
-        return [
-            'uid' => $request->get('username'),
-            'password' => $request->get('password'),
+     {
+         return [
+           'uid' => $request->get('username'),
+             'password' => $request->get('password'),
         ];
-    }
+     }
 
     public function username()
-    {
-        return 'username';
+     {
+         return 'username';
     }
 
     /*protected function credentials(Request $request)

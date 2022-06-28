@@ -1,4 +1,4 @@
-var tabla_cliente = $('#tabla_cliente_interno').DataTable({
+$('#tabla_cliente_interno').DataTable({
     destroy: true,
     responsive: true,
     processing: true,
@@ -7,7 +7,7 @@ var tabla_cliente = $('#tabla_cliente_interno').DataTable({
     autoWidth: false,
     dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-    ajax: "/pages/percepcion_cliente/listado_proceso",
+    ajax: "../pages/percepcion_cliente/listado_proceso",
     columns: [{
         data: 'nombre_areas',
         name: 'nombre_areas',
@@ -23,10 +23,10 @@ var tabla_cliente = $('#tabla_cliente_interno').DataTable({
     }, {
         data: 'calificacion',
         name: 'calificacion',
-    },{
+    }, {
         data: 'calificacion_total',
         name: 'calificacion_total',
-    },{
+    }, {
         class: "editar_proceso",
         orderable: false,
         data: null,
@@ -43,14 +43,28 @@ var tabla_cliente = $('#tabla_cliente_interno').DataTable({
         [5, 10, 25, 50, 75, 100, -1],
         [5, 10, 25, 50, 75, 100, "All"]
     ],
+
+    'language': {
+        'lengthMenu': 'Mostrar _MENU_ registros por página',
+        'zeroRecords': 'No hay registros',
+        'info': 'Mostrando página _PAGE_ de _PAGES_',
+        'infoEmpty': 'No hay registros disponibles',
+        'infoFiltered': '(filtrado de _MAX_ registros totales)',
+        'search': 'Buscar:',
+        'paginate': {
+            'next': 'Siguiente',
+            'previous': 'Anterior'
+        }
+    } 
+
 });
 
-$('#tabla_cliente_interno').on('click', 'td.editar_proceso', function() {
+$('#tabla_cliente_interno').on('click', 'td.editar_proceso', function () {
     var tr = $(this).closest('tr');
     var row = $('#tabla_cliente_interno').DataTable().row(tr);
     var d = row.data();
     console.log(d);
-    $('#form-procesos').attr("action", "http://pdc.test/pages/percepcion_cliente/update/" + d.id);
+    $('#form-procesos').attr("action", "../pages/percepcion_cliente/update/" + d.id);
     // $('#metodo-indicadores').attr("value", "put");
     $('#p_areas_id').val(d.p_areas_id);
     $('#razon_calificacion').val(d.razon_calificacion);

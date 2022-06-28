@@ -26,7 +26,7 @@ class ProcesoController extends Controller
     {
         $analisis_indicadores = analisis_indicadores::get();
         $User = User::get();
-        $areas = areas::get();
+        $areas = areas::orderBy('nombre_areas')->get();
         $estados = estados::get();
         $indicadores = indicadores::get();
         $frecuencia_control = frecuencia_control::get();
@@ -34,13 +34,6 @@ class ProcesoController extends Controller
         return view('pages.Procesos_Calidad.index', compact('analisis_indicadores', 'areas', 'estados', 'indicadores', 'frecuencia_control', 'User', 'metas'));
     }
 
-    /* public function getIndicadores(){
-        try {
-          
-        } catch (\Throwable $th) {
-            return response()->json(['message'=>'Error al traer la informacion de los indicadores'],500);
-        }
-    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -49,10 +42,15 @@ class ProcesoController extends Controller
      */
     public function crear()
     {
-        //
+        $analisis_indicadores = analisis_indicadores::get();
+        $areas = areas::orderBy('nombre_areas')->get();
+        $indicadores = indicadores::get();
+        $frecuencia_control = frecuencia_control::get();
+        $metas = metas::get();
+        return view('pages.Procesos_Calidad.indexDos', compact('analisis_indicadores', 'areas',  'indicadores', 'frecuencia_control',  'metas'));
     }
 
-    /**
+    /**|
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -62,11 +60,11 @@ class ProcesoController extends Controller
     {
         $datos = $request->all();
         $indicador = indicadores::create($datos);
-        $datos["indicadores_id"] = $datos["indicadores_id"]=$indicador->id;
+        $datos["indicadores_id"] = $datos["indicadores_id"] = $indicador->id;
         $datos['mes'] = now()->format('M');
         metas::create($datos);
         // dd($datos);
-        return redirect('pages/Procesos_Calidad');
+        return redirect('/pages/Procesos_Calidad_crear')->with('creacion_indicador', $datos['nombre_indicador']);
     }
 
     public function guardar_proceso(Request $request)
@@ -74,8 +72,10 @@ class ProcesoController extends Controller
         $datos = $request->all();
         $equivalencia = analisis_indicadores::avg('equivalencia');
         $datos['desempeño'] = $equivalencia;
+        $desempeño = analisis_indicadores::latest('desempeño')->first();
+        $datos['id'] = $desempeño;
         analisis_indicadores::create($datos);
-        return redirect('pages/Procesos_Calidad');
+        return redirect('pages/Procesos_Calidad')->with('desempeño', $desempeño);
     }
 
 
@@ -99,6 +99,7 @@ class ProcesoController extends Controller
      */
     public function editar($id)
     {
+        //
     }
 
     /**
@@ -115,6 +116,13 @@ class ProcesoController extends Controller
         return redirect('pages/Procesos_Calidad');
     }
 
+    public function actualizardos(Request $request, $id)
+    {
+        $datos = $request->all();
+        metas::findOrFail($id)->update($datos);
+        indicadores::findOrFail($id)->update($datos);
+        return redirect('pages/Procesos_Calidad_crear')->with('actualizar_indicador', $datos['nombre_indicador']);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -127,19 +135,40 @@ class ProcesoController extends Controller
         analisis_indicadores::findOrFail($id)->delete();
         return $id;
     }
-    
+    public function destroytwo($id)
+    {
+
+        metas::findOrFail($id)->delete();
+        indicadores::findOrFail($id)->delete();
+        return $id;
+        // return $id-> with('eliminar_indicador', $id['nombre_indicador']);
+
+
+    }
 
     public function getlistado_indicadores()
     {
         try {
-            $analisis_indicadores = analisis_indicadores::leftjoin("t_indicadores AS indicadores", "t_analisis_indicadores.indicadores_id", "=", "indicadores.id")->leftjoin("t_areas AS areas", "indicadores.areas_id", "=", "areas.id")->leftjoin("t_usuarios AS usuarios", "t_analisis_indicadores.usuarios_id", "=", "usuarios.id")->get(['t_analisis_indicadores.*', 'indicadores.nombre_indicador AS nombre_indicador', 'areas.nombre_areas AS areas','usuarios.name AS nombre_usuario']);
-            
-            $response = ['data' => $analisis_indicadores];          
-        } catch (\Throwable $th) {
 
+            $analisis_indicadores = analisis_indicadores::leftjoin("t_indicadores AS indicadores", "t_analisis_indicadores.indicadores_id", "=", "indicadores.id")->leftjoin("t_areas AS areas", "indicadores.areas_id", "=", "areas.id")->leftjoin("t_usuarios AS usuarios", "t_analisis_indicadores.usuarios_id", "=", "usuarios.id")->leftjoin("t_metas AS metas", "t_analisis_indicadores.metas_id", "=", "metas.id")->get(['t_analisis_indicadores.*', 'indicadores.nombre_indicador AS nombre_indicador', 'areas.nombre_areas AS areas', 'usuarios.name AS nombre_usuario', "metas.meta AS meta"]);
+
+            $response = ['data' => $analisis_indicadores];
+        } catch (\Throwable $th) {
         }
         // dd($analisis_indicadores);
         return response()->json($response);
     }
-    
+
+    public function getlistado_crear()
+    {
+        try {
+
+            $metas = metas::leftjoin("t_indicadores AS indicadores", "t_metas.indicadores_id", "=", "indicadores.id")->leftjoin("t_frecuencia_controles AS frecuencia_controles", "t_metas.indicadores_id", "=", "frecuencia_controles.id")->leftjoin("t_areas AS areas", "t_metas.indicadores_id", "=", "areas.id")->get(['t_metas.*', 'indicadores.nombre_indicador AS nombre_indicador', 'frecuencia_controles.frecuencia_control AS frecuencia_control', 'areas.nombre_areas AS areas']);
+
+            $response = ['data' => $metas];
+        } catch (\Throwable $th) {
+        }
+        // dd($analisis_indicadores);
+        return response()->json($response);
+    }
 }

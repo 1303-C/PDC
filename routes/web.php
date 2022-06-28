@@ -28,11 +28,15 @@ Auth::routes();
 
 /*Analisis Indicadores*/
 Route::get('/pages/Procesos_Calidad', [ProcesoController::class, 'index'])->name('Procesos_Calidad')->middleware('auth');
+Route::get('/pages/Procesos_Calidad_crear', [ProcesoController::class, 'crear'])->name('Procesos_Calidad_crear')->middleware('auth');
 Route::post('/pages/Procesos_Calidad/guardaruno', [ProcesoController::class, 'guardar_indicador'])->name('guardar_indicador');
 Route::post('/pages/Procesos_Calidad/guardardos', [ProcesoController::class, 'guardar_proceso'])->name('guardar_proceso');
 Route::post('/pages/Procesos_Calidad/actualizar/{id}', [ProcesoController::class, 'actualizar'])->name('actualizar_proceso');
+Route::post('/pages/Procesos_Calidad/actualizardos/{id}', [ProcesoController::class, 'actualizardos'])->name('actualizar_indicador');
 Route::delete('/pages/Procesos_Calidad/eliminar_indicador/{id}', [ProcesoController::class, 'destroy'])->name('eliminar_indicador');
+Route::delete('/pages/Procesos_Calidad/eliminar/{id}', [ProcesoController::class, 'destroytwo'])->name('eliminar_');
 Route::get('/pages/Procesos_Calidad/listado_indicadores',[ProcesoController::class, 'getlistado_indicadores'])->name('getlistado_indicadores');
+Route::get('/pages/Procesos_Calidad/listado_crear_indicadores',[ProcesoController::class, 'getlistado_crear'])->name('getlistado_crear');
 
 /*Percepcion_Cliente*/
 Route::get('/pages/percepcion_cliente', [PercepcionController::class, 'index'])->name('percepcion_cliente');

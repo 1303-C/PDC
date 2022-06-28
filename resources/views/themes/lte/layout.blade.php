@@ -23,7 +23,7 @@
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        @include('themes.lte.header')
+        {{-- @include('themes.lte.header') --}}
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -53,6 +53,14 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../assets/lte/dist/js/demo.js"></script>
     @yield('scripts')
+    
+    <script>
+        $("#modal-alert").modal("show");
+        $("#modal").modal("show");
+        setTimeout(function() {
+            $('#modal-alert').modal("hide");
+        }, 5000);
+    </script>
 </body>
 
 </html>

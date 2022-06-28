@@ -17,7 +17,7 @@ class CrearTablaTAnalisisIndicadores extends Migration
             $table->increments('id');
             $table->longText('analisis_indicador',400);
             $table->string('indicador_inverso',45);
-            $table->string('meta',45);
+            // $table->string('meta',45);
             $table->string('equivalencia',45);
             $table->string('resultados',45);
             $table->string('desempeño',50);

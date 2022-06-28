@@ -4,7 +4,7 @@ $.ajaxSetup({
     }
 });
 
-var tabla_indicador = $('#tabla_indicador').DataTable({
+$('#tabla_indicador').DataTable({
     destroy: true,
     responsive: true,
     processing: true,
@@ -13,7 +13,7 @@ var tabla_indicador = $('#tabla_indicador').DataTable({
     autoWidth: false,
     dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-    ajax: "/pages/Procesos_Calidad/listado_indicadores",
+    ajax: "../pages/Procesos_Calidad/listado_indicadores",
     columns: [{
         data: 'nombre_usuario',
         name: 'nombre_usuario',
@@ -76,12 +76,26 @@ var tabla_indicador = $('#tabla_indicador').DataTable({
             '</a>' +
             '</div>' +
             '</td>',
-    }],
+    }, ],
     lengthChange: true,
     lengthMenu: [
         [5, 10, 25, 50, 75, 100, -1],
         [5, 10, 25, 50, 75, 100, "All"]
     ],
+
+    language: {
+
+        'lengthMenu': 'Mostrar _MENU_ registros por página',
+        'zeroRecords': 'No hay registros',
+        'info': 'Mostrando página _PAGE_ de _PAGES_',
+        'infoEmpty': 'No hay registros disponibles',
+        'infoFiltered': '(filtrado de _MAX_ registros totales)',
+        'search': 'Buscar:',
+        'paginate': {
+            'next': 'Siguiente',
+            'previous': 'Anterior'
+        }
+    }
 
 });
 
@@ -95,20 +109,44 @@ $("#filtro_busqueda_fecha").keyup(function () {
     tabla.columns($(this).data('index')).search(this.value).draw();
 })
 
+$('#tabla_indicador tbody').on('click', 'td.eliminar_indicador', function () {
+    var tr = $(this).closest('tr');
+    var row = $('#tabla_indicador').DataTable().row(tr);
+    var d = row.data();
+    // console.log(d);
+    // datos = {};
+    // datos['id'] = d.id;
+    $.ajax({
+        type: 'DELETE',
+        url: "../pages/Procesos_Calidad/eliminar_indicador/" + d.id,
+        // data: datos,
+        success: function (msg) {
+            alert('Se ha eliminado el indicador' + msg);
+            window.location = "../pages/Procesos_Calidad";
+        },
+        error: function (msg) {
+            alert('Hubo un error al eliminar')
+        }
+    });
+});
+
+
 $('#tabla_indicador tbody').on('click', 'td.editar_indicador', function () {
     var tr = $(this).closest('tr');
     var row = $('#tabla_indicador').DataTable().row(tr);
     var d = row.data();
-    $('#form-indicadores').attr("action", "http://pdc.test/pages/Procesos_Calidad/actualizar/" + d.id);
+    $('#form-indicadores').attr("action", "../pages/Procesos_Calidad/actualizar/" + d.id);
     $('#metodo-indicadores').attr("value", "put");
+    $('#usuarios_id').val(d.usuarios_id);
     $('#indicadores_id').val(d.indicadores_id);
     $('#indicador_inverso').val(d.indicador_inverso);
     $('#analisis_indicador').val(d.analisis_indicador);
     $('#resultados').val(d.resultados);
-    $('#resultados').val(d.resultados);
-    $('#meta').val(d.meta);
+    $('#metas_id').val(d.metas_id);
     $('#equivalencia').val(d.equivalencia);
     $('#desempeño').val(d.desempeño);
+
+
 
     //Visualizacion Botones 
     $('#btn-guardar').css('display', 'none')
@@ -117,33 +155,14 @@ $('#tabla_indicador tbody').on('click', 'td.editar_indicador', function () {
 
 });
 
-$('#tabla_indicador tbody').on('click', 'td.eliminar_indicador', function () {
-    var tr = $(this).closest('tr');
-    var row = $('#tabla_indicador').DataTable().row(tr);
-    var d = row.data();
-    console.log(d);
-    // datos = {};
-    // datos['id'] = d.id;
-    $.ajax({
-        type: 'DELETE',
-        url: "/pages/Procesos_Calidad/eliminar_indicador/" + d.id,
-        // data: datos,
-        success: function (msg) {
-            alert('Se ha eliminado el indicador' + msg);
-            window.location = "/pages/Procesos_Calidad";
-        },
-        error: function (msg) {
-            alert('Hubo un error al eliminar')
-        }
-    });
-});
 
 function limpiar() {
+    $('usuarios_id').val('');
     $('#indicadores_id').val('');
     $('#indicador_inverso').val('');
     $('#analisis_indicador').val('');
     $('#resultados').val('');
-    $('#meta').val('');
+    $('#metas_id').val('');
     $('#equivalencia').val('');
     $('#desempeño').val('');
 
@@ -152,7 +171,7 @@ function limpiar() {
     $('#btn-guardar').css('display', '')
     $('#btn-editar').css('display', 'none')
     $('#btn-cancelar').css('display', 'none')
-}
+};
 
 function llamarValueResultado() {
     const selectResultado = document.querySelector('.tabla_resultados').value;

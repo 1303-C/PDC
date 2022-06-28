@@ -17,7 +17,7 @@ class PercepcionController extends Controller
     public function index(Request $request)
     {
         $procesos = procesos::get();
-        $areas = areas::get();
+        $areas = areas::orderBy('nombre_areas')->get();
         return view('pages.percepcion_cliente.index', compact('procesos', 'areas'));
     }
 
