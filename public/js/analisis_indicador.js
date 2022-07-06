@@ -76,7 +76,7 @@ $('#tabla_indicador').DataTable({
             '</a>' +
             '</div>' +
             '</td>',
-    }, ],
+    },],
     lengthChange: true,
     lengthMenu: [
         [5, 10, 25, 50, 75, 100, -1],
@@ -113,21 +113,31 @@ $('#tabla_indicador tbody').on('click', 'td.eliminar_indicador', function () {
     var tr = $(this).closest('tr');
     var row = $('#tabla_indicador').DataTable().row(tr);
     var d = row.data();
-    // console.log(d);
-    // datos = {};
-    // datos['id'] = d.id;
+
+    $('#IdAnalisis').val(d.id);
+    $("#modal-delete-analisis").modal("show");
+    $("#modal").modal("show");
+    setTimeout(function () {
+        $('#modal-delete-analisis').modal("hide");
+    }, 5000);
+
+});
+
+$("#btn-confirmar-analisis").click(function () {
+    // console.log($("#IdCrear").val());
     $.ajax({
         type: 'DELETE',
-        url: "../pages/Procesos_Calidad/eliminar_indicador/" + d.id,
+        url: "../pages/Procesos_Calidad/eliminar_indicador/" +  $("#IdAnalisis").val(),
         // data: datos,
         success: function (msg) {
-            alert('Se ha eliminado el indicador' + msg);
+            // alert('Se ha eliminado el indicador' + msg);
             window.location = "../pages/Procesos_Calidad";
         },
         error: function (msg) {
-            alert('Hubo un error al eliminar')
+            // alert('Hubo un error al eliminar')
         }
     });
+
 });
 
 

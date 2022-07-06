@@ -37,4 +37,7 @@
 @section('contenido')
     @include('pages.Procesos_Calidad.header')
     @include('pages.Procesos_Calidad.form')
+    @include('pages.Procesos_Calidad.modal-crearanalisis')
+    @include('pages.Procesos_Calidad.modal-editaranalisis')
+    @include('pages.Procesos_Calidad.modal-eliminaranalisis')
 @endsection

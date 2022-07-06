@@ -75,7 +75,7 @@ class ProcesoController extends Controller
         $desempeño = analisis_indicadores::latest('desempeño')->first();
         $datos['id'] = $desempeño;
         analisis_indicadores::create($datos);
-        return redirect('pages/Procesos_Calidad')->with('desempeño', $desempeño);
+        return redirect('pages/Procesos_Calidad')->with('desempeño', $desempeño)->with('creacion_analisis', $datos['analisis_indicador']);
     }
 
 
@@ -113,7 +113,7 @@ class ProcesoController extends Controller
     {
         $datos = $request->all();
         analisis_indicadores::findOrFail($id)->update($datos);
-        return redirect('pages/Procesos_Calidad');
+        return redirect('pages/Procesos_Calidad')->with('actualizar_analisis', $datos['analisis_indicador']);
     }
 
     public function actualizardos(Request $request, $id)
@@ -131,19 +131,19 @@ class ProcesoController extends Controller
      */
     public function destroy($id)
     {
-        // return $id;
+        
         analisis_indicadores::findOrFail($id)->delete();
         return $id;
     }
+    
     public function destroytwo($id)
     {
 
         metas::findOrFail($id)->delete();
         indicadores::findOrFail($id)->delete();
         return $id;
-        // return $id-> with('eliminar_indicador', $id['nombre_indicador']);
-
-
+       
+     
     }
 
     public function getlistado_indicadores()

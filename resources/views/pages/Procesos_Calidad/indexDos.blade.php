@@ -38,4 +38,5 @@
     @include('pages.Procesos_Calidad.crearindicador')
     @include('pages.Procesos_Calidad.modal-crearindicador')
     @include('pages.Procesos_Calidad.modal-editarindicador')
+    @include('pages.Procesos_Calidad.modal-eliminarindicador')
 @endsection

@@ -2,6 +2,7 @@
     <form action="{{ route('guardar_proceso') }}" method="POST" id="form-indicadores">
         @csrf
         <input type="hidden" name="method" value="" id="metodo-indicadores">
+        <input id="IdAnalisis" name="IdAnalisis" type="hidden" value=" ">
         <div class="card card-blue">
             <div class="card-header">
                 <h3 class="card-title">Análisis Indicador</h3>

@@ -2,6 +2,7 @@
      <form action="{{ route('guardar_indicador') }}" method="POST" id="form_crear_indicadores">
          @csrf
          <input type="hidden" name="method" value="" id="metodo_indicadores_dos">
+         <input id="IdCrear" name="IdCrear" type="hidden" value=" ">
          <div class="card card-blue">
              <div class="card-header">
                  <h3 class="card-title">Crear Indicador</h3>

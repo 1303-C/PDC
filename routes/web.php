@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CaagController;
 use App\Http\Controllers\CcgrController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PercepcionController;
@@ -23,12 +24,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Auth::routes();
 
 /*Analisis Indicadores*/
-Route::get('/pages/Procesos_Calidad', [ProcesoController::class, 'index'])->name('Procesos_Calidad')->middleware('auth');
-Route::get('/pages/Procesos_Calidad_crear', [ProcesoController::class, 'crear'])->name('Procesos_Calidad_crear')->middleware('auth');
+Route::get('/pages/Procesos_Calidad', [ProcesoController::class, 'index'])->name('Procesos_Calidad');
+Route::get('/pages/Procesos_Calidad_crear', [ProcesoController::class, 'crear'])->name('Procesos_Calidad_crear');
 Route::post('/pages/Procesos_Calidad/guardaruno', [ProcesoController::class, 'guardar_indicador'])->name('guardar_indicador');
 Route::post('/pages/Procesos_Calidad/guardardos', [ProcesoController::class, 'guardar_proceso'])->name('guardar_proceso');
 Route::post('/pages/Procesos_Calidad/actualizar/{id}', [ProcesoController::class, 'actualizar'])->name('actualizar_proceso');
@@ -55,12 +57,15 @@ Route::get('/pages/caag',[CaagController::class, 'index'])->name('caag');
 Route::post('/pages/caag/guardarcaag', [CaagController::class, 'store'])->name('store_caag');
 Route::post('/pages/caag/update/{id}', [CaagController::class, 'update'])->name('update_actividadesGerencia');
 Route::get('/pages/caag/listado_actividadesGerencia',[CaagController::class, 'getlistado_actividadesGerencia'])->name('getlistado_actividadesGerencia');
+
 /*CCGR*/
 Route::get('/pages/ccgr',[CcgrController::class, 'index'])->name('ccgr');
 Route::post('/pages/estado_acciones/guardarccgr', [CcgrController::class, 'store'])->name('store_ccgr');
 Route::post('/pages/ccgr/update/{id}', [CcgrController::class, 'update'])->name('update_cumplimientoCompromisos');
 Route::get('/pages/ccgr/listado_cumplimientoCompromisos',[CcgrController::class, 'getlistado_cumplimientoCompromisos'])->name('getlistado_cumplimientoCompromisos');
 
+/*DASHBOARD*/
+Route::get('/pages/dashboard',[DashboardController::class, 'index'])->name('dashboard');
 
 
-Route::get('/prueba',[ProcesoController::class, 'getlistado_indicadores'])->name('prueba');
+

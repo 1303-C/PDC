@@ -26,7 +26,7 @@ $('#tabla_crear_indicador').DataTable({
     }, {
         data: 'meta',
         name: 'meta',
-    },{
+    }, {
         class: "editar_indicador_creado",
         orderable: false,
         data: null,
@@ -37,7 +37,7 @@ $('#tabla_crear_indicador').DataTable({
             '</a>' +
             '</div>' +
             '</td>',
-    },{
+    }, {
         class: "eliminar_indicador_creado",
         orderable: false,
         data: null,
@@ -48,7 +48,7 @@ $('#tabla_crear_indicador').DataTable({
             '</a>' +
             '</div>' +
             '</td>',
-    }, ],
+    },],
     lengthChange: true,
     lengthMenu: [
         [5, 10, 25, 50, 75, 100, -1],
@@ -76,26 +76,40 @@ $("#filtro_busqueda_proceso").keyup(function () {
     tabla.columns($(this).data('index')).search(this.value).draw();
 })
 
+
+
 $('#tabla_crear_indicador tbody').on('click', 'td.eliminar_indicador_creado', function () {
+
+
     var tr = $(this).closest('tr');
     var row = $('#tabla_crear_indicador').DataTable().row(tr);
     var d = row.data();
-    // console.log(d);
-    // datos = {};
-    // datos['id'] = d.id;
+
+    $('#IdCrear').val(d.id);
+    $("#modal-delete").modal("show");
+    $("#modal").modal("show");
+    setTimeout(function () {
+        $('#modal-delete').modal("hide");
+    }, 5000);
+});
+
+$("#btn-confirmar-indicador").click(function () {
+    // console.log($("#IdCrear").val());
     $.ajax({
         type: 'DELETE',
-        url: "../pages/Procesos_Calidad/eliminar/" + d.id,
+        url: "../pages/Procesos_Calidad/eliminar/" + $("#IdCrear").val(),
+
         // data: datos,
         success: function (msg) {
-            alert('Se ha eliminado el indicador' + msg);
+            // alert('Se ha eliminado el indicador' + msg);
             window.location = "../pages/Procesos_Calidad_crear";
         },
         error: function (msg) {
-            alert('Hubo un error al eliminar')
+            // alert('Hubo un error al eliminar')
         }
     });
 });
+
 
 $('#tabla_crear_indicador tbody').on('click', 'td.editar_indicador_creado', function () {
     var tr = $(this).closest('tr');
