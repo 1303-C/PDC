@@ -29,8 +29,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Auth::routes();
 
 /*Analisis Indicadores*/
-Route::get('/pages/Procesos_Calidad', [ProcesoController::class, 'index'])->name('Procesos_Calidad');
-Route::get('/pages/Procesos_Calidad_crear', [ProcesoController::class, 'crear'])->name('Procesos_Calidad_crear');
+Route::get('/pages/Procesos_Calidad', [ProcesoController::class, 'index'])->name('Procesos_Calidad')->middleware('auth');
+Route::get('/pages/Procesos_Calidad_crear', [ProcesoController::class, 'crear'])->name('Procesos_Calidad_crear')->middleware('auth');
 Route::post('/pages/Procesos_Calidad/guardaruno', [ProcesoController::class, 'guardar_indicador'])->name('guardar_indicador');
 Route::post('/pages/Procesos_Calidad/guardardos', [ProcesoController::class, 'guardar_proceso'])->name('guardar_proceso');
 Route::post('/pages/Procesos_Calidad/actualizar/{id}', [ProcesoController::class, 'actualizar'])->name('actualizar_proceso');
